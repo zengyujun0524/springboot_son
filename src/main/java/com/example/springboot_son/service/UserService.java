@@ -44,53 +44,58 @@ public class UserService {
         final byte[] textByte = token.getBytes("UTF-8");
         // 编码
         final String encodedText = encoder.encodeToString(textByte);
-        checkUser=  userMapper.checkRegisterPhone(user.getUser_name());
+        checkUser=  userMapper.checkRegisterPhone(user.getUser_phone());
+        String tokendate=encodedText+"-"+System.currentTimeMillis();
           if (checkUser==null){
               log.info("-------用户注册-------");
               log.info("insert INTO `user` (user_name,user_password,user_toke,phone_model,picture_url,data_time,user_sex)" +
-                      " VALUES("+user.getUser_name()+","+user.getUser_password()+","+user.getUser_toke()+","+user.getPhone_model()+
+                      " VALUES("+user.getUser_name()+","+user.getUser_password()+","+user.getUser_token()+","+user.getPhone_model()+
                       ","+user.getPicture_url()+","+user.getData_time()+"-"+user.getUser_sex()+")");
               try {
 
                   user.setData_time(createdate);
-                  user.setUser_toke(encodedText);
+                  user.setUser_token(tokendate);
               //开始注册
                   index=  userMapper.registerPhone(user);
                   if (index>0){
                       log.info("-------测试1-------");
 
-                      data.put("user",user);
-                      return ResponseResult.success(user);
+                      checkUser=  userMapper.checkRegisterPhone(user.getUser_phone());
+                      data.put("user",checkUser);
+                      data.put("result",1);
+                      return ResponseResult.success(data);
                   }
-
               }catch(Exception e){
                   //异常处理
                   e.printStackTrace();
                   log.info("-------测试4-------"+index);
                    return ResponseResult.failure(ResultCode.USERID_NULL);
-
               }
-
           }
-
-        user.setUser_toke(encodedText);
+        log.info(tokendate+"-------测试4-------"+user.getUser_phone());
+           int index1 =userMapper.upToken(tokendate,user.getUser_phone());
+          if (index1>0){
+              user.setUser_token(tokendate);
+              data.put("user",checkUser);
+              data.put("result",2);
+              return ResponseResult.success(data);
+          }
         log.info("-------测试3-------");
-       return ResponseResult.success(checkUser);
-
+       return ResponseResult.failure("toekn更新失败");
     }
 
     /**
      * 查询用户
-     * @param user_name
+     * @param user_phone
      * @return
      * @throws Exception
      */
-   public  ResponseResult selectUser(String user_name) throws Exception{
+   public  ResponseResult selectUser(String user_phone) throws Exception{
         log.info("-------查询用户 -------");
 
        try {
            User user =new User();
-            user=userMapper.checkRegisterPhone(user_name);
+            user=userMapper.checkRegisterPhone(user_phone);
            log.info("-------user>>>>>>"+user);
             if (user!=null){
                 log.info("查询成功");
@@ -99,9 +104,35 @@ public class UserService {
                 return ResponseResult.success(data);
             }
        }catch (Exception e){
-           return  ResponseResult.failure("用户不存在");
+           e.printStackTrace();
+
        }
        return  ResponseResult.failure("用户不存在");
+    }
+
+    /**
+     * 修改用户资料
+     * @param user
+     * @return
+     * @throws Exception
+     */
+    public ResponseResult upUser( User  user) throws Exception{
+        log.info("-------修改用户资料 -------");
+       try {
+           int index=userMapper.upUser(user);
+            if (index>0){
+                log.info("-------修改成功 -------");
+                User user1 =userMapper.queryUers(user.getUser_id());
+                Map<String, Object> data = new HashMap<String, Object>();
+                data.put("user",user1);
+                return  ResponseResult.success(data);
+            }
+
+       }catch (Exception e){
+           e.printStackTrace();
+       }
+          return  ResponseResult.failure(ResultCode.MODIFICATION_FAILED);
+
     }
 
 }

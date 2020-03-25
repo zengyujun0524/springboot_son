@@ -17,11 +17,13 @@ public enum ResultCode {
 	PARAMETER_NULL(10002, "Parameter does not exist"), 
 	PARAMETER_TYPE_ERR(10003, "Incorrect parameter type"), 
 	PARAMETER_TYPE_LOSE(10004, "Miss parameter"), 
-	PARAMETER_NOMOREDATA(10005, "No more data"), 
+	PARAMETER_NOMOREDATA(10005, "No more data"),
+
 
 	/*
 	 * 用户错误：20001-29999
 	 */
+	LOGIN_DATE(2000,"请重新登入"),
 	LOGIN_ERR(20001, "Login failed"),
 	LOGIN_OUT_ERR(20002, "Logout failed"),  
 	ACCOUNT_PASSWORD_MISMATCH(20003, "Account and password do not match"),  
@@ -31,8 +33,8 @@ public enum ResultCode {
 	MACADDRESS_NULL(20007, "MAC address doesn't exist"),  
 	ACCOUNT_TYPE_NULL(20008, "Account type doesn't exist"),  
 	REGISTERCODE_NULL(20009, "SMS verification code doesn't exist"),  
-	PHONE_NULL(20010, "The phone number doesn't exist"),  
-	PHONE_FORMAT_ERR(20011, "Incorrect phone number format"),  
+	PHONE_NULL(20010, "The phone number doesn't exist"),
+	MODIFICATION_FAILED	 (20011, "修改失败"),
 	EMAIL_FORMAT_ERR(20012, "Incorrect E-mail address"),  
 	ACCOUNT_EXIST(20013, "Username already exists"),  
 	PASSWORD_NULL(20014, "Password doesn't exist"),  

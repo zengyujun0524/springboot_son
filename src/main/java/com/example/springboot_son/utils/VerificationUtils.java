@@ -61,7 +61,7 @@ public class VerificationUtils {
 					templateId, params, smsSign, "", "");  // 签名参数未提供或者为空时，会使用默认签名发送短信
 			System.out.print(result);
 			data.put("random",ran);
-			//生成当前时间
+			//生成当前时间  万分感谢
 			data.put("time", System.currentTimeMillis());
 		} catch (HTTPException e) {
 			// HTTP响应码错误

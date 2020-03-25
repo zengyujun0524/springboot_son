@@ -38,7 +38,8 @@ public class SwaggerApp {
                 //版本号
                 .version("1.0")
                 //描述
-                .description("把把科技API接口文档")
+                .description("参数 state（1：未绑定，2：已绑定）  sex（1：男 ,2：女）  result(1:新用户 2：老用户) 测试验证码：888888")
+
                 .build();
     }
 }

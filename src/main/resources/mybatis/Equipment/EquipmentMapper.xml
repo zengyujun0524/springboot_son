@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.springboot_son.mapper.EquipmentMapper">
+<!-- <resultMap id="equipment_id" type="com.example.springboot_son.entity.Equipment">
+
+  <result column="equipment_name" property="equipment_name" />
+  <result column="equipment_describe" property="equipment_describe" />
+  <result column="equipment_pictures" property="equipment_pictures" />
+  <association property="user"
+               javaType="com.example.springboot_son.entity.Relation">
+   <id property="relation_id" column="relation_id" />
+   <result property="state" column="state" />
+  </association>
+ </resultMap>-->
+
+ <select id="equipmentInfo"
+         resultType="com.example.springboot_son.entity.Equipment" >
+SELECT
+e.equipment_id,e.equipment_name,e.equipment_describe,e.equipment_pictures,r.state
+FROM
+equipment  as e LEFT JOIN relation as r on  e.equipment_id =r.equipment_id
+ <if test="user_id != null">
+  and
+  r.user_id=#{user_id}
+
+ </if>
+
+
+ </select>
+	
+</mapper>

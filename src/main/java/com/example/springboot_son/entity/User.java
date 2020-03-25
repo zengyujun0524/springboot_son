@@ -1,17 +1,22 @@
 package com.example.springboot_son.entity;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Entity;
 
 @Entity
 public class User {
+    @ApiModelProperty(value = "主键")
     private    Integer user_id; //主键
+
     private    String user_name; //用户姓名
     private  String user_password;//用户密码
-    private  String user_toke;//用户的toke
+    private  String user_token;//用户的toke
     private  String phone_model;//手机型号
     private  String picture_url;//头像路径
     private  String data_time;//注册时间
     private  Integer user_sex;//性别（0男，1女）
+    private  String user_phone;//手机号
 
     public Integer getUser_id() {
         return user_id;
@@ -37,12 +42,12 @@ public class User {
         this.user_password = user_password;
     }
 
-    public String getUser_toke() {
-        return user_toke;
+    public String getUser_token() {
+        return user_token;
     }
 
-    public void setUser_toke(String user_toke) {
-        this.user_toke = user_toke;
+    public void setUser_token(String user_token) {
+        this.user_token = user_token;
     }
 
     public String getPhone_model() {
@@ -56,7 +61,6 @@ public class User {
     public String getPicture_url() {
         return picture_url;
     }
-
     public void setPicture_url(String picture_url) {
         this.picture_url = picture_url;
     }
@@ -77,6 +81,13 @@ public class User {
         this.user_sex = user_sex;
     }
 
+    public String getUser_phone() {
+        return user_phone;
+    }
+
+    public void setUser_phone(String user_phone) {
+        this.user_phone = user_phone;
+    }
 
     public User() {
     }
