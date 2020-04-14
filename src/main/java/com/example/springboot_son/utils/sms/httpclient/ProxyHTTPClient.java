@@ -59,8 +59,8 @@ public class ProxyHTTPClient implements HTTPClient {
         // Create http client
         CloseableHttpClient client = HttpClients.createDefault();
 
-        // Fetch http response
-        try {
+            // Fetch http response 
+            try {
             CloseableHttpResponse response = client.execute(reqBuilder.build());
             try {
                 // May throw IOException

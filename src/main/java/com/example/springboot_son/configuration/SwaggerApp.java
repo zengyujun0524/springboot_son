@@ -33,12 +33,11 @@ public class SwaggerApp {
         return new ApiInfoBuilder()
                 //页面标题
                 .title("把把科技API接口文档")
-                //创建人
-              // .contact(new Contact("carry", "http://blog.bianxh.top/", ""))
+                //创建人 tt              // .contact(new Contact("carry", "http://blog.bianxh.top/", ""))
                 //版本号
                 .version("1.0")
                 //描述
-                .description("参数 state（1：未绑定，2：已绑定）  sex（1：男 ,2：女）  result(1:新用户 2：老用户) 测试验证码：888888")
+                .description("参数 state（1：未绑定，2：已绑定）  sex（1：男 ,2：女）  result(1:新用户 2：老用户) binding_state:(0.未设置手势密码 ，1：已设置)测试验证码：888888")
 
                 .build();
     }

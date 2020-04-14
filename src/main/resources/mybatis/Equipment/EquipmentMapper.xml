@@ -1,31 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.springboot_son.mapper.EquipmentMapper">
-<!-- <resultMap id="equipment_id" type="com.example.springboot_son.entity.Equipment">
+    <!-- <resultMap id="equipment_id" type="com.example.springboot_son.entity.Equipment">
 
-  <result column="equipment_name" property="equipment_name" />
-  <result column="equipment_describe" property="equipment_describe" />
-  <result column="equipment_pictures" property="equipment_pictures" />
-  <association property="user"
-               javaType="com.example.springboot_son.entity.Relation">
-   <id property="relation_id" column="relation_id" />
-   <result property="state" column="state" />
-  </association>
- </resultMap>-->
+      <result column="equipment_name" property="equipment_name" />
+      <result column="equipment_describe" property="equipment_describe" />
+      <result column="equipment_pictures" property="equipment_pictures" />
+      <association property="user"
+                   javaType="com.example.springboot_son.entity.Relation">
+       <id property="relation_id" column="relation_id" />
+       <result property="state" column="state" />
 
- <select id="equipmentInfo"
-         resultType="com.example.springboot_son.entity.Equipment" >
-SELECT
-e.equipment_id,e.equipment_name,e.equipment_describe,e.equipment_pictures,r.state
-FROM
-equipment  as e LEFT JOIN relation as r on  e.equipment_id =r.equipment_id
- <if test="user_id != null">
-  and
-  r.user_id=#{user_id}
+      </association>
+     </resultMap>-->
+    <sql id="Bash_List">
+        equipment_id,equipment_name,equipment_describe,equipment_pictures
+    </sql>
+    <select id="equipmentInfo"
+            resultType="com.example.springboot_son.entity.Equipment">
+        <if test="user_id !=null">
 
- </if>
+            SELECT
+            DISTINCT e.equipment_id,e.equipment_name,e.equipment_describe,e.equipment_pictures,r.state
+            FROM
+            equipment as e  LEFT JOIN relation as r on e.equipment_id =r.equipment_id
+            and
+            r.user_id=#{user_id} ORDER BY e.equipment_id
+        </if>
+        <if test="user_id ==null">
+            SELECT
+            <include refid="Bash_List"></include>
+            FROM
+            equipment
+        </if>
+    </select>
+    <!--用户查询绑定设备    -->
+    <select id="bindingDevice"
+            resultType="com.example.springboot_son.entity.Equipment">
+        SELECT equipment_name,equipment_describe,equipment_pictures,r.state
+        FROM equipment as e ,relation as r WHERE e.equipment_id  = r.equipment_id
+        and
+        r.state=2 and r.user_id=#{user_id} and  e.equipment_id  = #{equipment_id}
+    </select>
 
 
- </select>
-	
+
 </mapper>

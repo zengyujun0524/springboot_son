@@ -55,9 +55,9 @@ public class SmsMultiSenderResult extends SmsResultBase {
     public SmsMultiSenderResult() {
         this.errMsg = "";
         this.ext = "";
-        this.details = new ArrayList<Detail>();
-    }
-
+            this.details = new ArrayList<Detail>();
+        }
+  //
     @Override
     public SmsMultiSenderResult parseFromHTTPResponse(HTTPResponse response)
             throws JSONException {
@@ -73,8 +73,7 @@ public class SmsMultiSenderResult extends SmsResultBase {
         if (json.has("detail") && !json.isNull("detail")) {
             JSONArray jsonDetail = json.getJSONArray("detail");
             for (int i = 0; i < jsonDetail.length(); i++) {
-                details.add((new Detail()).parse(jsonDetail.getJSONObject(i)));
-            }
+                details.add((new Detail()).parse(jsonDetail.getJSONObject(i)));           }
         }
 
 

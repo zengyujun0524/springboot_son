@@ -17,9 +17,8 @@
 10:52:24.709 logback [restartedMain] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
 10:52:25.722 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
 10:52:25.747 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
-10:52:25.827 logback [restartedMain] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
-10:52:26.068 logback [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
-10:52:26.092 logback [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+10:52:25.827 logback [restartedMain] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (ple
+                                                                                                 　　　　　　　　　　　　          10:52:26.092 logback [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
 10:52:26.110 logback [restartedMain] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
 10:52:26.388 logback [restartedMain] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: updateUserByIdUsingPOST_1
 10:52:26.410 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8095"]

@@ -11,7 +11,7 @@ import com.github.qcloudsms.httpclient.HTTPException;
 import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import org.springframework.stereotype.Component;
 
 
 /**
@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
  * @author Administrator
  *
  */
+@Component
 public class VerificationUtils {
 
 	private static Logger log = LoggerFactory.getLogger(VerificationUtils.class);
@@ -61,7 +62,7 @@ public class VerificationUtils {
 					templateId, params, smsSign, "", "");  // 签名参数未提供或者为空时，会使用默认签名发送短信
 			System.out.print(result);
 			data.put("random",ran);
-			//生成当前时间  万分感谢
+			//生成当前时间
 			data.put("time", System.currentTimeMillis());
 		} catch (HTTPException e) {
 			// HTTP响应码错误
@@ -73,7 +74,7 @@ public class VerificationUtils {
 			// 网络IO错误
 			e.printStackTrace();
 		}
-	/*	//生成4位数验证码
+	/*	//生成4位数验证码  sh
 		Integer ran=(int)(Math.random()*900000)+100000;
 		//发送短信
 		//MainApp.sendRegister(countryCode, phone,ran);
@@ -98,6 +99,7 @@ public class VerificationUtils {
 	//判断验证码时效性、正确性
 	public static Map<String,String> SMSVerification(Long sendTime,Integer OldRandom,Integer newRandom) throws Exception {
 		Map<String, String> result = new HashMap<String,String>();
+		log.info("OldRandom>>>."+OldRandom+"<<newRandom>>>>>>"+newRandom);
 		if(OldRandom.equals(newRandom)) {	//传入的验证码是否和发送验证码一致
 			long nowDate = (long) System.currentTimeMillis();
 			double diff = (nowDate-sendTime)/60000;	//计算差值是否大于6分钟，否则验证码失效
@@ -110,6 +112,7 @@ public class VerificationUtils {
 				result.put("result", "TimeOut");
 			}
 		}else {
+			log.info("新久密码不正确");
 			result.put("result", "registerCodeFail");
 		}
 		return result;

@@ -6,7 +6,7 @@
 package com.example.springboot_son.vo;
 
 import io.swagger.annotations.ApiModelProperty;
-import org.springframework.data.annotation.Id;
+
 
 import javax.persistence.Column;
 

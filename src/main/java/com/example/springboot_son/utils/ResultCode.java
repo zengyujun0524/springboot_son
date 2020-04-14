@@ -33,7 +33,7 @@ public enum ResultCode {
 	MACADDRESS_NULL(20007, "MAC address doesn't exist"),  
 	ACCOUNT_TYPE_NULL(20008, "Account type doesn't exist"),  
 	REGISTERCODE_NULL(20009, "SMS verification code doesn't exist"),  
-	PHONE_NULL(20010, "The phone number doesn't exist"),
+	PHONE_NULL(20010, "手机已注册"),
 	MODIFICATION_FAILED	 (20011, "修改失败"),
 	EMAIL_FORMAT_ERR(20012, "Incorrect E-mail address"),  
 	ACCOUNT_EXIST(20013, "Username already exists"),  
@@ -67,6 +67,7 @@ public enum ResultCode {
 	IMCONNECT_NULL(20041, "User IM's UID doesn’t exist."), 
 	INDEX_NULL(20042, "Incoming call type doesn’t exist."),
 	CODEO_OR_ACCOUNT_ERR(20043,"Please check if your area code or account is correct."),
+	VER_ERR(20044,"验证失败"),
 
 
 	/*
@@ -123,8 +124,8 @@ public enum ResultCode {
 	DEVICELOCK_NULL(30049, "Device lock doesn’t exist."),
 	ACTCODE_NULL(30050, "Activation code doesn’t exist."),
 	ACTCODE_HAS_BEEN_USED(30051, "Activation code is already taken."),
-	ACT_FAILE(30052, "Activation failed."),
-	ACTIVATION_CODE_EXPIRED(30053, "Activation code has expired."),
+	ACT_FAILE(30052, "激活码不正确或者已绑定"),
+	ACTIVATION_CODE_EXPIRED(30053, "激活失败"),
 	
 	
 	/*
@@ -180,6 +181,7 @@ public enum ResultCode {
 	private Integer msgCode;
 
 	private String message;
+
 
 	ResultCode(Integer msgCode, String message) {
 		this.msgCode = msgCode;

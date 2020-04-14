@@ -24,6 +24,7 @@ public enum SysErrorCode {
 
 	/**
 	 * 初始化构造
+     *
 	 */
 	private Integer msgCode;
 

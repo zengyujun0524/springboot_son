@@ -1,5 +1,7 @@
 package com.example.springboot_son.utils;
 
+import org.springframework.stereotype.Component;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -14,6 +16,7 @@ import java.security.MessageDigest;
  * @author Administrator
  *
  */
+@Component
 public class FileToMD5 {
 	public static String getStringMd5(File file) throws FileNotFoundException {
         String value = null;

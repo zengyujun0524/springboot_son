@@ -6,10 +6,11 @@
 package com.example.springboot_son.entity;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 import javax.persistence.Entity;
 
-@Entity
+@Data
 public class Relation {
     @ApiModelProperty(value = "标识列")
      private Integer relation_id;
@@ -20,39 +21,8 @@ public class Relation {
     @ApiModelProperty(value = "绑定状态")
     private Integer state;
 
-    public Relation() {
 
-    }
 
-    public Integer getRelation_id() {
-        return relation_id;
-    }
 
-    public void setRelation_id(Integer relation_id) {
-        this.relation_id = relation_id;
-    }
 
-    public Integer getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
-    }
-
-    public Integer getEquipment_id() {
-        return equipment_id;
-    }
-
-    public void setEquipment_id(Integer equipment_id) {
-        this.equipment_id = equipment_id;
-    }
-
-    public Integer getState() {
-        return state;
-    }
-
-    public void setState(Integer state) {
-        this.state = state;
-    }
 }

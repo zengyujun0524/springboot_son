@@ -13,6 +13,7 @@ import java.io.Serializable;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.springframework.stereotype.Component;
 
 /**
  * 
@@ -20,6 +21,7 @@ import io.swagger.annotations.ApiModelProperty;
  * @author Carry
  * @version @param 
  */
+@Component
 @ApiModel
 public class ResponseResult implements Serializable {
 	
@@ -167,7 +169,7 @@ public class ResponseResult implements Serializable {
     }
     
     /**
-     * 
+     *
      * failure:(自定义异常).
      * @param message 自定义异常信息
      * @return
