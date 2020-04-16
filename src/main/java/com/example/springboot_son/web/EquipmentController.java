@@ -6,6 +6,7 @@
 package com.example.springboot_son.web;
 
 import com.example.springboot_son.service.EquipmentService;
+import com.example.springboot_son.utils.ObjectUtils;
 import com.example.springboot_son.utils.ResponseResult;
 import com.example.springboot_son.utils.ResultCode;
 import com.example.springboot_son.utils.TokenVerification;
@@ -65,7 +66,8 @@ public class EquipmentController {
     })
 
  public  ResponseResult bindingDevice(Integer user_id,String user_token,Integer equipment_id) throws Exception {
-  // 这几天
+           if (ObjectUtils.isEmpty(user_id)||ObjectUtils.isEmpty(equipment_id))
+               return ResponseResult.failure(ResultCode.NULL_ERR);
 
      return equipmentService.bindingDevice(user_id,equipment_id,user_token);
  }

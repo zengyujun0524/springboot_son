@@ -6,10 +6,7 @@ import com.example.springboot_son.entity.User;
 import com.example.springboot_son.entity.Verification;
 import com.example.springboot_son.service.RedisService;
 import com.example.springboot_son.service.UserService;
-import com.example.springboot_son.utils.ResponseResult;
-import com.example.springboot_son.utils.ResultCode;
-import com.example.springboot_son.utils.TokenVerification;
-import com.example.springboot_son.utils.VerificationUtils;
+import com.example.springboot_son.utils.*;
 
 import com.example.springboot_son.utils.sms.httpclient.HTTPException;
 import io.swagger.annotations.Api;
@@ -17,8 +14,6 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,6 +41,7 @@ public class UserController {
     /**
      * 手机注册登入
      *
+     * 
      * @param user_phone
      * @param phone_model
      * @param picture_url
@@ -65,7 +61,6 @@ public class UserController {
     public ResponseResult registerPhone(String user_phone, String phone_model,
                                         String picture_url, Integer registerCode) throws Exception {
         if (registerCode == 888888) {
-
 
         } else {
             log.info("redisService.getExpire(user_phone)>"+redisService.getExpire(user_phone));
@@ -185,13 +180,13 @@ public class UserController {
         User user = new User();
 
         user.setUser_sex(user_sex);
-        if (isEmpty(picture_url)) {
+        if (ObjectUtils.isEmpty(picture_url)) {
             log.info("picture_url>>" + picture_url);
             user.setPicture_url(null);
         } else {
             user.setPicture_url(picture_url);
         }
-        if (isEmpty(user_name)) {
+        if (ObjectUtils.isEmpty(user_name)) {
             log.info("user_name>>" + user_name);
             user.setUser_name(null);
         } else {
@@ -261,11 +256,8 @@ public class UserController {
             @ApiImplicitParam(name = "user_token", value = "*身份令牌Token", dataType = "String", paramType = "query")
     })
     public ResponseResult userLogout(Integer user_id,String user_token) throws Exception {
-       /* if (!token.verification(user_token)) {
-
-       富甲一方
-            return ResponseResult.failure(ResultCode.LOGIN_DATE);
-        }*/
+         if (ObjectUtils.isEmpty(user_id)||ObjectUtils.isEmpty(user_token))
+             return  ResponseResult.failure(ResultCode.NULL_ERR);
 
         return userService.userLogout(user_id,user_token);
     }
@@ -312,10 +304,31 @@ public class UserController {
             @ApiImplicitParam(name = "user_token", value = "*身份令牌Token", dataType = "String", paramType = "query")
     })
     public  ResponseResult getUserByToken(Integer user_id,String user_token)throws  Exception{
+        if (ObjectUtils.isEmpty(user_id)||ObjectUtils.isEmpty(user_token))
+            return  ResponseResult.failure(ResultCode.NULL_ERR);
+
         return  userService.getUserByToken(user_id,user_token);
     }
-    public static boolean isEmpty(String str) {
-        return str == null || str.trim().length() == 0 || "null".equals(str.trim());
+
+
+    /**
+     * 修改push_token
+     * @param user_id
+     * @param push_token
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/modifyPush", method = RequestMethod.POST)
+    @ApiOperation(value = "通过token验证手机号", notes = "验证操作")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "user_id", value = "*用户ID", dataType = "Integer", paramType = "query"),
+            @ApiImplicitParam(name = "push_token", value = "用户token", dataType = "String", paramType = "query")
+    })
+    public  ResponseResult modifyPush(Integer user_id,String push_token)throws Exception{
+        if (ObjectUtils.isEmpty(user_id)||ObjectUtils.isEmpty(push_token))
+            return  ResponseResult.failure(ResultCode.NULL_ERR);
+        return  userService.modifyPush(user_id,push_token);
     }
+
 
 }

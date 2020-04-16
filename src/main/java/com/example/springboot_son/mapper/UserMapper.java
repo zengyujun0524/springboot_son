@@ -36,7 +36,9 @@ public interface UserMapper {
     //获取验证数据
     Verification getVer(int user_id)throws  Exception;
     //通过token验证手机号
-     Verification getUserByToken(int user_id,String user_token) throws  Exception;
+     Verification getUserByToken(int user_id, String user_token) throws  Exception;
+     //修改推送token
+       Boolean modifyPush(int user_id,String push_token ) throws  Exception;
 
 }
 

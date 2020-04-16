@@ -127,4 +127,16 @@
     </where>
 
     </select>
+    <update id="modifyPush">
+        update  verification
+        <set>
+        <if test="push_token !=null and push_token !=''" >
+            push_token=#{push_token}
+        </if>
+        </set>
+        <where>
+            user_id=#{user_id}
+        </where>
+    </update>
+
 </mapper>

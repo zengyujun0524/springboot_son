@@ -27,4 +27,5 @@ public class HeadsetByAct {
     @Column(name = "binding_state")
     public Integer binState;
 
+  
 }

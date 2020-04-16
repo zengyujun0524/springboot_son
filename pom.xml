@@ -29,6 +29,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+   <!--  推送-->
+        <dependency>
+            <groupId>com.google.gcm</groupId>
+            <artifactId>gcm-server</artifactId>
+            <version>1.0.0</version>
+        </dependency>
      <!--   集成mybatis-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>

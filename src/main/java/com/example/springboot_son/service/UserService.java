@@ -6,12 +6,8 @@ import com.example.springboot_son.mapper.UserMapper;
 import com.example.springboot_son.utils.ObjectUtils;
 import com.example.springboot_son.utils.ResponseResult;
 import com.example.springboot_son.utils.ResultCode;
-import com.example.springboot_son.utils.UrlSend;
 import com.example.springboot_son.vo.UserVo;
-import com.google.gson.internal.$Gson$Preconditions;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -67,7 +63,7 @@ public class UserService {
 
                       checkUser=  userMapper.checkRegisterPhone(user.getUser_phone());
                     if (userMapper.inserVer(checkUser.getUser_id(),tokendate)>0) {
-                        Verification   verification = userMapper.getVer(checkUser.getUser_id());
+                        Verification verification = userMapper.getVer(checkUser.getUser_id());
                         UserVo userVo =new UserVo(checkUser.getUser_id(),checkUser.getUser_name(),checkUser.getUser_password(),checkUser.getPhone_model()
                                 ,checkUser.getPicture_url(),checkUser.getData_time(),checkUser.getUser_sex(),checkUser.getUser_phone(),verification.getUser_token(),
                                 verification.getUser_gesture(),verification.getBinding_state(),1);
@@ -230,6 +226,22 @@ public class UserService {
     }
 
     /**
+     *修改pushtoken
+     * @param user_id
+     * @param push_token
+     * @return
+     * @throws Exception
+     */
+    public  ResponseResult modifyPush(int user_id,String push_token )throws  Exception {
+        try {
+            return userMapper.modifyPush(user_id, push_token) == true ? ResponseResult.success() : ResponseResult.failure("token传入失败");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ResponseResult.failure(ResultCode.TOKEN_ERR);
+    }
+
+    /**
      * 通过token验证手机号
      * @param user_id
      * @param user_token
@@ -287,6 +299,9 @@ public class UserService {
 
         return  false;
     }
+
+
+
 //    public static boolean isEmpty(String str) {
 ////        return str == null || str.trim().length() == 0 || "null".equals(str.trim());
 ////    }

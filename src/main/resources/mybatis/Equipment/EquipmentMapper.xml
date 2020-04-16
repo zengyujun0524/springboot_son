@@ -43,6 +43,4 @@
         r.state=2 and r.user_id=#{user_id} and  e.equipment_id  = #{equipment_id}
     </select>
 
-
-
 </mapper>

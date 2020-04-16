@@ -5,17 +5,13 @@
  */
         package com.example.springboot_son.service;
         import com.example.springboot_son.entity.Equipment;
-        import com.example.springboot_son.entity.User;
         import com.example.springboot_son.entity.Verification;
         import com.example.springboot_son.mapper.EquipmentMapper;
         import com.example.springboot_son.mapper.UserMapper;
         import com.example.springboot_son.utils.ObjectUtils;
         import com.example.springboot_son.utils.ResponseResult;
         import com.example.springboot_son.utils.ResultCode;
-        import com.example.springboot_son.vo.MainPageVo;
         import lombok.extern.slf4j.Slf4j;
-        import org.slf4j.Logger;
-        import org.slf4j.LoggerFactory;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.stereotype.Service;
 

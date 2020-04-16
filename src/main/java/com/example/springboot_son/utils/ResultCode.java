@@ -13,6 +13,7 @@ public enum ResultCode {
 	 */
 	SUCCESS(1024, "成功"),
 	REGISTER(1025,"注册成功"),
+	NULL_ERR(1026,"非法参数 请检查是否为空"),
 	PARAMETER_INVALID(10001, "Invalid parameter"), 
 	PARAMETER_NULL(10002, "Parameter does not exist"), 
 	PARAMETER_TYPE_ERR(10003, "Incorrect parameter type"), 
@@ -66,7 +67,7 @@ public enum ResultCode {
 	UPDATEPUSHTOKEN_FAIL(20040, "Failed to update offline token."), 
 	IMCONNECT_NULL(20041, "User IM's UID doesn’t exist."), 
 	INDEX_NULL(20042, "Incoming call type doesn’t exist."),
-	CODEO_OR_ACCOUNT_ERR(20043,"Please check if your area code or account is correct."),
+	TOKEN_ERR(20043,"Please check if your area code or account is correct."),
 	VER_ERR(20044,"验证失败"),
 
 
