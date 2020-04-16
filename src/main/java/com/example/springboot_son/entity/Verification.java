@@ -26,5 +26,5 @@ public class Verification {
     private  String push_token;
 
 
-
+//
 }
