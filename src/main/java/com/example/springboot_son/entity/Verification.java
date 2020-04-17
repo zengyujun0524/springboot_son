@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 @Data
 public class Verification {
-
+ //
     @ApiModelProperty(value = "用户（ID）",name = "user_id",dataType = "Integer")
     private   Integer  user_id;
     @ApiModelProperty(value = "用户token",name = "user_token",dataType = "String")
@@ -26,5 +26,4 @@ public class Verification {
     private  String push_token;
 
 
-//b6f80d2e5886c998fe9f56b3e3e63d81607abc32
 }
