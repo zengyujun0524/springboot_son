@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.springboot_son.mapper.UserMapper">
+  <!--  查询列 人多会炸的  -->
+    <sql id="Base_list">
+        user_id,user_name,user_password,phone_model,picture_url,data_time,user_sex,user_phone
+    </sql>
+    <sql id="Base_ver">
+        user_id,user_token,user_gesture,binding_state
+    </sql>
+<!--插入列-->
+     <sql id="Base_Inser">
+         user_name,user_password,phone_model,picture_url,data_time,user_sex,user_phone
+     </sql>
+	<!-- 手机用户注册 -->
+	<insert id="registerPhone"
+		parameterType="com.example.springboot_son.entity.User">
+
+	insert INTO `user` (<include refid="Base_Inser"></include>)
+	VALUES(#{user_name},#{user_password},#{phone_model},#{picture_url},#{data_time},#{user_sex},#{user_phone})
+
+	</insert>
+<!--检查用户名是否存在-->
+    <select id="checkRegisterPhone"
+            resultType="com.example.springboot_son.entity.User" >
+      select <include refid="Base_list"></include> from `user`   WHERE user_phone=#{user_phone}
+  </select>
+    <!--查询用户-->
+    <select id="queryUers"
+            resultType="com.example.springboot_son.entity.User" >
+      select <include refid="Base_list"></include> from `user`   WHERE user_id=#{user_id}
+  </select>
+
+<!--手机用户登入-->
+    <select id="phoneLogin"   resultType="com.example.springboot_son.entity.User" >
+   SELECT <include refid="Base_list"></include> FROM `user` WHERE user_name=#{user_name} and  user_password=#{user_password}
+
+    </select>
+     <!--更新token-->
+    <update id="upToken" parameterType="com.example.springboot_son.entity.Verification">
+        update verification
+        <set>
+            <if test="user_token !=null">
+                user_token = #{user_token},
+            </if>
+        </set>
+   <where>
+       user_id=#{user_id}
+   </where>
+    </update>
+
+      <!--修改用户资料-->
+    <update id="upUser" parameterType="com.example.springboot_son.entity.User">
+   UPDATE `user`
+      <set>
+          <if test="user_sex !=null">
+              user_sex = #{user_sex},
+          </if>
+          <if test="picture_url !=null">
+              picture_url = #{picture_url},
+          </if>
+          <if test="user_name !=null">
+              user_name = #{user_name}
+          </if>
+
+      </set>
+      <where>
+         user_id=#{user_id}
+       </where>
+
+    </update>
+    <!--修改手机号-->
+<update id="modifyPhone" parameterType="com.example.springboot_son.entity.User">
+    update  user
+    <set>
+        user_phone=#{user_phone}
+  </set>
+   <where>
+       user_id=#{user_id}
+   </where>
+</update>
+   <!-- 用户登出 -->
+    <update id="userLogout" parameterType="com.example.springboot_son.entity.User">
+        update  user
+        <set>
+            user_token=''
+        </set>
+        <where>
+            user_id=#{user_id}
+        </where>
+    </update>
+
+    <select id="getToken" resultType="com.example.springboot_son.entity.User">
+    select <include refid="Base_list"></include> from  user
+        <where>
+            user_token= #{user_token}
+    </where>
+    </select>
+    <insert id="inserVer" parameterType="com.example.springboot_son.entity.Verification">
+        INSERT  INTO verification
+        (user_id,user_token)  VALUES(#{user_id},#{user_token})
+    </insert>
+    
+    <update id="modifyVer" parameterType="com.example.springboot_son.entity.Verification">
+        UPDATE verification SET user_token=#{user_token},
+        user_gesture=#{user_gesture},
+        binding_state=#{binding_state}
+        <where>
+        user_id=#{user_id}
+    </where>
+
+    </update>
+
+<select id="getVer" resultType="com.example.springboot_son.entity.Verification">
+    select <include refid="Base_ver"></include> FROM verification
+    <where>
+        user_id=#{user_id}
+    </where>
+</select>
+    <select id="getUserByToken" resultType="com.example.springboot_son.entity.Verification">
+
+        SELECT <include refid="Base_ver"></include> FROM verification
+        <where>
+        user_id=#{user_id}
+        and
+        user_token=#{user_token}
+    </where>
+
+    </select>
+    <update id="modifyPush">
+        update  verification
+        <set>
+        <if test="push_token !=null and push_token !=''" >
+            push_token=#{push_token}
+        </if>
+        </set>
+        <where>
+            user_id=#{user_id}
+        </where>
+    </update>
+
+</mapper>

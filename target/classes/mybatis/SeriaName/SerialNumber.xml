@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.springboot_son.mapper.SerialNumberMapper">
+<resultMap id="id_hea" type="com.example.springboot_son.dto.HeadsetByAct">
+    <id property="id" column="equ_id" />
+    <result property="id"  column="equ_id" />
+    <result property="serialNumber" column="serial_number"/>
+    <result property="intoTime" column="get_into_time" />
+    <result property="actTime" column="activation_time"/>
+    <result property="binState"  column="binding_state"/>
+</resultMap>
+<!-- </resultMap>   -->
+ <sql id="Base_Query">
+  equ_id,serial_number,activation_time,get_into_time,binding_state
+ </sql>
+  <!--  激活设备       -->
+	<update id="actEquipment" parameterType="com.example.springboot_son.dto.HeadsetByAct">
+     update equ_binding
+     <set>
+       binding_state =#{binState},
+      activation_time=#{actTime}
+     </set>
+     <where>
+      serial_number=#{serialNumber}
+     </where>
+    </update>
+
+    <select id="getEquInfo" resultType="com.example.springboot_son.dto.HeadsetByAct" resultMap="id_hea">
+     SELECT  * from
+        equ_binding
+       <where>
+           serial_number=#{serial_number}
+       </where>
+    </select>
+</mapper>
