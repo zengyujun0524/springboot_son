@@ -12,7 +12,7 @@ import java.util.List;
 @Mapper
 public interface RelationMapper {
     //查看设备状态
-       List<Relation> checkState(int user_id)  throws Exception;
+       List<Relation> checkState(int userId)  throws Exception;
 
 
 }

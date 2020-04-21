@@ -29,7 +29,7 @@
      SELECT  * from
         equ_binding
        <where>
-           serial_number=#{serial_number}
+           serial_number=#{serialNumber}
        </where>
     </select>
 </mapper>

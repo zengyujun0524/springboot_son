@@ -14,16 +14,16 @@ import java.io.Serializable;
 @Data
 public class Verification {
  //
-    @ApiModelProperty(value = "用户（ID）",name = "user_id",dataType = "Integer")
-    private   Integer  user_id;
-    @ApiModelProperty(value = "用户token",name = "user_token",dataType = "String")
-    private   String user_token;
-    @ApiModelProperty(value = "主键",name = "user_id",dataType = "String")
-    private  String user_gesture;
-    @ApiModelProperty(value = "绑定状态",name = "binding_state",dataType = "Integer")
-    private  Integer binding_state;
-    @ApiModelProperty(value = "推送token" ,name = "push_token",dataType ="String" )
-    private  String push_token;
+    @ApiModelProperty(value = "用户（ID）",name = "userId",dataType = "Integer")
+    private   Integer  userId;
+    @ApiModelProperty(value = "用户token",name = "userToken",dataType = "String")
+    private   String userToken;
+    @ApiModelProperty(value = "主键",name = "userGesture",dataType = "String")
+    private  String userGesture;
+    @ApiModelProperty(value = "绑定状态",name = "bindingState",dataType = "Integer")
+    private  Integer bindingState;
+    @ApiModelProperty(value = "推送token" ,name = "pushToken",dataType ="String" )
+    private  String pushToken;
 
 
 }

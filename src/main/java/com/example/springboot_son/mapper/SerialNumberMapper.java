@@ -13,7 +13,7 @@ public interface SerialNumberMapper {
     //激活设备
     Integer actEquipment(HeadsetByAct headsetByAct);
     //查询设备
-    HeadsetByAct getEquInfo(@Param("serial_number") String SerialNumber);
+    HeadsetByAct getEquInfo(@Param("serialNumber") String SerialNumber);
 
 
 }

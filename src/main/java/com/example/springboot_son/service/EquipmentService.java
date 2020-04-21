@@ -27,6 +27,7 @@ public class EquipmentService {
 
     @Autowired
     EquipmentMapper equipmentMapper;
+
     @Autowired
     UserMapper userMapper;
     /**
@@ -34,7 +35,7 @@ public class EquipmentService {
      * @return bin
      * @throws Exception
      */
-    public ResponseResult equipmentInfo(Integer user_id) throws Exception {
+    public ResponseResult equipmentInfo(Integer userId) throws Exception {
         Map<String, Object> data = new HashMap<String, Object>();
         //获取所有设备信息
         try {
@@ -43,8 +44,8 @@ public class EquipmentService {
 
             List<Equipment> list = new LinkedList<Equipment>();
 
-            log.info(">>>>>>>>>>>>"+user_id);
-            list = equipmentMapper.equipmentInfo(user_id);
+            log.info(">>>>>>>>>>>>"+userId);
+            list = equipmentMapper.equipmentInfo(userId);
             data.put("list", list);
             return ResponseResult.success(data);
         } catch (Exception e) {
@@ -55,21 +56,21 @@ public class EquipmentService {
 
     /**
      * 查询绑定设备
-     * @param user_id
+     * @param userId
      * @return
      * @throws Exception
      */
-    public  ResponseResult bindingDevice (Integer user_id,Integer equipment_id,String user_token ) throws  Exception{
+    public  ResponseResult bindingDevice (Integer userId,Integer equipment_id,String userToken ) throws  Exception{
         Map<String, Object> data = new HashMap<String, Object>();
         //获取所有设备信息
         try {
-        if (!verification(user_token,user_id)){
-            log.info("token失效"+user_token);
+        if (!verification(userToken,userId)){
+            log.info("token失效"+userToken);
             return  ResponseResult.failure(ResultCode.LOGIN_DATE);
         }
             List<Equipment> list = new LinkedList<Equipment>();
-            log.info(">>>>>>>>>>>>"+user_id);
-            list = equipmentMapper.bindingDevice(user_id,equipment_id);
+            log.info(">>>>>>>>>>>>"+userId);
+            list = equipmentMapper.bindingDevice(userId,equipment_id);
             data.put("list", list);
             return ResponseResult.success(data);
         } catch (Exception e) {
@@ -78,20 +79,20 @@ public class EquipmentService {
         return ResponseResult.failure("查询失败");
     }
 //
-    public  boolean  verification(String user_token,Integer user_id) throws Exception {
+    public  boolean  verification(String userToken,Integer userId) throws Exception {
 
-        if (ObjectUtils.isEmpty(user_token)){
+        if (ObjectUtils.isEmpty(userToken)){
             return false ;
         }
         Verification verification1 = new Verification();
         try {
-            verification1  =userMapper.getVer(user_id);
+            verification1  =userMapper.getVer(userId);
             if (verification1==null) {
                 return false;
             }
-            log.info("token失效"+verification1.getUser_token());
+            log.info("token失效"+verification1.getUserToken());
 
-            if (!verification1.getUser_token().equals(user_token)||verification1.getUser_token()==null) {
+            if (!verification1.getUserToken().equals(userToken)||verification1.getUserToken()==null) {
                 return false;
             }
         }catch (Exception e){
@@ -100,7 +101,7 @@ public class EquipmentService {
 
 
         // 一个月时间 2592000
-        String sub=user_token.substring(user_token.indexOf("-")+1);
+        String sub=userToken.substring(userToken.indexOf("-")+1);
         long l = Long.parseLong( sub )/1000;
         long i= System.currentTimeMillis()/1000;
         if (i-l<2592000){

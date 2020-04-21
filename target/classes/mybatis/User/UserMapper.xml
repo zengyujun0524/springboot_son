@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.springboot_son.mapper.UserMapper">
+    <resultMap type="com.example.springboot_son.entity.User" id="UserMap">
+        <result property="userId" column="user_id" jdbcType="OTHER"/>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+        <result property="userPassword" column="user_password" jdbcType="VARCHAR"/>
+        <result property="phoneModel" column="phone_model" jdbcType="VARCHAR"/>
+        <result property="pictureUrl" column="picture_url" jdbcType="VARCHAR"/>
+        <result property="dataTime" column="data_time" jdbcType="VARCHAR"/>
+        <result property="userSex" column="user_sex" jdbcType="OTHER"/>
+        <result property="userPhone" column="user_phone" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap type="com.example.springboot_son.entity.Verification" id="VerificationMap">
+        <result property="userId" column="user_id" jdbcType="OTHER"/>
+        <result property="userToken" column="user_token" jdbcType="VARCHAR"/>
+        <result property="userGesture" column="user_gesture" jdbcType="VARCHAR"/>
+        <result property="bindingState" column="binding_state" jdbcType="OTHER"/>
+        <result property="pushToken" column="push_token" jdbcType="VARCHAR"/>
+    </resultMap>
   <!--  查询列 人多会炸的  -->
     <sql id="Base_list">
         user_id,user_name,user_password,phone_model,picture_url,data_time,user_sex,user_phone
@@ -17,35 +35,35 @@
 		parameterType="com.example.springboot_son.entity.User">
 
 	insert INTO `user` (<include refid="Base_Inser"></include>)
-	VALUES(#{user_name},#{user_password},#{phone_model},#{picture_url},#{data_time},#{user_sex},#{user_phone})
+	VALUES(#{userName},#{userPassword},#{phoneModel},#{pictureUrl},#{dataTime},#{userSex},#{userPhone})
 
 	</insert>
 <!--检查用户名是否存在-->
     <select id="checkRegisterPhone"
-            resultType="com.example.springboot_son.entity.User" >
-      select <include refid="Base_list"></include> from `user`   WHERE user_phone=#{user_phone}
+            resultType="com.example.springboot_son.entity.User" resultMap="UserMap">
+      select <include refid="Base_list"></include> from `user`   WHERE user_phone=#{userPhone}
   </select>
     <!--查询用户-->
     <select id="queryUers"
-            resultType="com.example.springboot_son.entity.User" >
-      select <include refid="Base_list"></include> from `user`   WHERE user_id=#{user_id}
+            resultType="com.example.springboot_son.entity.User" resultMap="UserMap" >
+      select <include refid="Base_list"></include> from `user`   WHERE user_id=#{userId}
   </select>
 
 <!--手机用户登入-->
-    <select id="phoneLogin"   resultType="com.example.springboot_son.entity.User" >
-   SELECT <include refid="Base_list"></include> FROM `user` WHERE user_name=#{user_name} and  user_password=#{user_password}
+    <select id="phoneLogin"   resultType="com.example.springboot_son.entity.User"  resultMap="UserMap">
+   SELECT <include refid="Base_list"></include> FROM `user` WHERE user_name=#{userName} and  user_password=#{userPassword}
 
     </select>
      <!--更新token-->
     <update id="upToken" parameterType="com.example.springboot_son.entity.Verification">
         update verification
         <set>
-            <if test="user_token !=null">
-                user_token = #{user_token},
+            <if test="userToken !=null">
+                user_token = #{userToken},
             </if>
         </set>
    <where>
-       user_id=#{user_id}
+       user_id=#{userId}
    </where>
     </update>
 
@@ -53,19 +71,19 @@
     <update id="upUser" parameterType="com.example.springboot_son.entity.User">
    UPDATE `user`
       <set>
-          <if test="user_sex !=null">
-              user_sex = #{user_sex},
+          <if test="userSex !=null">
+              user_sex = #{userSex},
           </if>
-          <if test="picture_url !=null">
-              picture_url = #{picture_url},
+          <if test="pictureUrl !=null">
+              picture_url = #{pictureUrl},
           </if>
-          <if test="user_name !=null">
-              user_name = #{user_name}
+          <if test="userName !=null">
+              user_name = #{userName}
           </if>
 
       </set>
       <where>
-         user_id=#{user_id}
+         user_id=#{userId}
        </where>
 
     </update>
@@ -73,10 +91,10 @@
 <update id="modifyPhone" parameterType="com.example.springboot_son.entity.User">
     update  user
     <set>
-        user_phone=#{user_phone}
+        user_phone=#{userPhone}
   </set>
    <where>
-       user_id=#{user_id}
+       user_id=#{userId}
    </where>
 </update>
    <!-- 用户登出 -->
@@ -86,57 +104,57 @@
             user_token=''
         </set>
         <where>
-            user_id=#{user_id}
+            user_id=#{userId}
         </where>
     </update>
 
-    <select id="getToken" resultType="com.example.springboot_son.entity.User">
+    <select id="getToken" resultType="com.example.springboot_son.entity.User" resultMap="UserMap">
     select <include refid="Base_list"></include> from  user
         <where>
-            user_token= #{user_token}
+            user_token= #{userToken}
     </where>
     </select>
+
     <insert id="inserVer" parameterType="com.example.springboot_son.entity.Verification">
         INSERT  INTO verification
-        (user_id,user_token)  VALUES(#{user_id},#{user_token})
+        (user_id,user_token)  VALUES(#{userId},#{userToken})
     </insert>
     
     <update id="modifyVer" parameterType="com.example.springboot_son.entity.Verification">
-        UPDATE verification SET user_token=#{user_token},
-        user_gesture=#{user_gesture},
-        binding_state=#{binding_state}
+        UPDATE verification SET user_token=#{userToken},
+        user_gesture=#{userGesture},
+        binding_state=#{bindingState}
         <where>
-        user_id=#{user_id}
+        user_id=#{userId}
     </where>
 
     </update>
 
-<select id="getVer" resultType="com.example.springboot_son.entity.Verification">
+<select id="getVer" resultType="com.example.springboot_son.entity.Verification" resultMap="VerificationMap">
     select <include refid="Base_ver"></include> FROM verification
     <where>
-        user_id=#{user_id}
+        user_id=#{userId}
     </where>
 </select>
-    <select id="getUserByToken" resultType="com.example.springboot_son.entity.Verification">
+    <select id="getUserByToken" resultType="com.example.springboot_son.entity.Verification" resultMap="VerificationMap">
 
         SELECT <include refid="Base_ver"></include> FROM verification
         <where>
-        user_id=#{user_id}
+        user_id=#{userId}
         and
-        user_token=#{user_token}
+        user_token=#{userToken}
     </where>
 
     </select>
     <update id="modifyPush">
         update  verification
         <set>
-        <if test="push_token !=null and push_token !=''" >
-            push_token=#{push_token}
+        <if test="pushToken !=null and pushToken !=''" >
+            push_token=#{pushToken}
         </if>
         </set>
         <where>
-            user_id=#{user_id}
+            user_id=#{userId}
         </where>
     </update>
-
 </mapper>

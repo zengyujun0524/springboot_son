@@ -91,12 +91,12 @@ public class UserController {
         // 非空判断传入信息
 
         User user = new User();
-        user.setUser_phone(user_phone);
-        user.setUser_name("请设置");
-        user.setPhone_model(phone_model);
-        user.setPicture_url(picture_url);
-        user.setUser_password("");
-        user.setUser_sex(3);
+        user.setUserPhone(user_phone);
+        user.setUserName("请设置");
+        user.setPhoneModel(phone_model);
+        user.setPictureUrl(picture_url);
+        user.setUserPassword("");
+        user.setUserSex(3);
 
 
         return userService.registerPhone(user);
@@ -179,22 +179,22 @@ public class UserController {
 
         User user = new User();
 
-        user.setUser_sex(user_sex);
+        user.setUserSex(user_sex);
         if (ObjectUtils.isEmpty(picture_url)) {
             log.info("picture_url>>" + picture_url);
-            user.setPicture_url(null);
+            user.setPictureUrl(null);
         } else {
-            user.setPicture_url(picture_url);
+            user.setPictureUrl(picture_url);
         }
         if (ObjectUtils.isEmpty(user_name)) {
             log.info("user_name>>" + user_name);
-            user.setUser_name(null);
+            user.setUserName(null);
         } else {
-            user.setUser_name(user_name);
+            user.setUserName(user_name);
         }
 
 
-        user.setUser_id(user_id);
+        user.setUserId(user_id);
         return userService.upUser(user,user_token);
     }
 
@@ -280,13 +280,13 @@ public class UserController {
     public  ResponseResult modifyVer(Integer user_id,String user_token,String user_gesture)throws  Exception{
         Verification verification = new Verification();
         if (user_gesture.equals("0")){
-            verification.setBinding_state(0);
+            verification.setBindingState(0);
         }else {
-            verification.setBinding_state(1);
+            verification.setBindingState(1);
         }
-        verification.setUser_gesture(user_gesture);
-        verification.setUser_id(user_id);
-        verification.setUser_token(user_token);
+        verification.setUserGesture(user_gesture);
+        verification.setUserId(user_id);
+        verification.setUserToken(user_token);
         return userService.modifyVer(verification);
     }
 

@@ -1,6 +1,17 @@
 server:
   port: 8012
-
+#  ssl:
+#    key-store: classpath:zyj.pfx
+#    key-store-password: 8Q64w0Uo
+#    key-store-type: pfx 8Q64w0Uo   可以求
+#  ssl:   #SSL证书路径 一定要加上classpath:
+#   key-store:classpath: zyj.jks
+#   #SSL证书密码
+#    key-store-password: 8Q64w0Uo
+#   #证书类型
+#   key-store-type: JKS
+#    #证书别名
+#   key-alias: alias
 spring:
   datasource:
     username: root

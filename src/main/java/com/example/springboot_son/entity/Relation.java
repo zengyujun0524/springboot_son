@@ -13,16 +13,13 @@ import javax.persistence.Entity;
 @Data
 public class Relation {
     @ApiModelProperty(value = "标识列")
-     private Integer relation_id;
+    private Integer relationId;
     @ApiModelProperty(value = "用户ID")
-    private Integer user_id;
+    private Integer userId;
     @ApiModelProperty(value = "设备ID")
-    private Integer equipment_id;
+    private Integer equipmentId;
     @ApiModelProperty(value = "绑定状态")
     private Integer state;
-
-
-
 
 
 }

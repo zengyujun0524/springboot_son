@@ -10,6 +10,8 @@ import com.example.springboot_son.vo.UserVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
 import java.util.Base64;
@@ -29,6 +31,7 @@ public class UserService {
      * @return
      * @throws Exception
      */
+    @Transactional(rollbackFor = Exception.class)
     public ResponseResult registerPhone(User user) throws Exception{
         Integer index = 0;
         Map<String, Object> data = new HashMap<String, Object>();
@@ -37,36 +40,37 @@ public class UserService {
         Date date = new Date();
         // 设置要获取到什么样的时间
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        // 获取String类型的时间ß
+        // 获取String类型的时间
         String createdate = sdf.format(date);
-        String token = user.getUser_password() + "zyj" + createdate;
+        String token = user.getUserPassword() + "zyj" + createdate;
         // 加密密码
         final Base64.Encoder encoder = Base64.getEncoder();
         final byte[] textByte = token.getBytes("UTF-8");
-        // 编码  
-        log.info("-------用户注册-------"+user.getUser_phone());
+        // 编码
+        log.info("-------用户注册-------"+user.getUserPhone());
         final String encodedText = encoder.encodeToString(textByte);
-        checkUser=  userMapper.checkRegisterPhone(user.getUser_phone());
+        checkUser=  userMapper.checkRegisterPhone(user.getUserPhone());
         String tokendate=encodedText+"-"+System.currentTimeMillis();
           if (checkUser==null){
               log.info("-------用户注册-------");
               log.info("insert INTO `user` (user_name,user_password,user_toke,phone_model,picture_url,data_time,user_sex)" +
-                      " VALUES("+user.getUser_name()+","+user.getUser_password()+","+user.getPhone_model()+
-                      ","+user.getPicture_url()+","+user.getData_time()+"-"+user.getUser_sex()+")");
+                      " VALUES("+user.getUserName()+","+user.getUserPassword()+","+user.getPhoneModel()+
+                      ","+user.getPictureUrl()+","+user.getDataTime()+"-"+user.getUserSex()+")");
               try {
-                  user.setData_time(createdate);
+                  user.setDataTime(createdate);
 //                  user.setUser_token(tokendate);
               //开始注册
                   index=  userMapper.registerPhone(user);
                   if (index>0){
                       log.info("-------测试1-------");
 
-                      checkUser=  userMapper.checkRegisterPhone(user.getUser_phone());
-                    if (userMapper.inserVer(checkUser.getUser_id(),tokendate)>0) {
-                        Verification verification = userMapper.getVer(checkUser.getUser_id());
-                        UserVo userVo =new UserVo(checkUser.getUser_id(),checkUser.getUser_name(),checkUser.getUser_password(),checkUser.getPhone_model()
-                                ,checkUser.getPicture_url(),checkUser.getData_time(),checkUser.getUser_sex(),checkUser.getUser_phone(),verification.getUser_token(),
-                                verification.getUser_gesture(),verification.getBinding_state(),1);
+                      checkUser=  userMapper.checkRegisterPhone(user.getUserPhone());
+                    if (userMapper.inserVer(checkUser.getUserId(),tokendate)>0) {
+                        log.info("-------测试5-------");
+                        Verification verification = userMapper.getVer(checkUser.getUserId());
+                        UserVo userVo =new UserVo(checkUser.getUserId(),checkUser.getUserName(),checkUser.getUserPassword(),checkUser.getPhoneModel()
+                                ,checkUser.getPictureUrl(),checkUser.getDataTime(),checkUser.getUserSex(),checkUser.getUserPhone(),verification.getUserToken(),
+                                verification.getUserGesture(),verification.getBindingState(),1);
                         data.put("userVo",userVo);
                         return ResponseResult.success(data);
                     }
@@ -75,19 +79,18 @@ public class UserService {
                   }
               }catch(Exception e){
                   //异常处理
-                  e.printStackTrace();
-                  log.info("-------测试4-------"+index);
-                   return ResponseResult.failure(ResultCode.USERID_NULL);
+                  throw new Exception("抛异常了");
+
               }
           }
 
-    log.info(tokendate+"-------登入-------"+user.getUser_id()+tokendate);
-    int index2 =userMapper.upToken(tokendate,checkUser.getUser_id());
+    log.info(tokendate+"-------登入-------"+user.getUserId()+tokendate);
+    int index2 =userMapper.upToken(tokendate,checkUser.getUserId());
           if (index2>0){
-            Verification   verification = userMapper.getVer(checkUser.getUser_id());
-              UserVo userVo =new UserVo(checkUser.getUser_id(),checkUser.getUser_name(),checkUser.getUser_password(),checkUser.getPhone_model()
-                      ,checkUser.getPicture_url(),checkUser.getData_time(),checkUser.getUser_sex(),checkUser.getUser_phone(),verification.getUser_token(),
-                      verification.getUser_gesture(),verification.getBinding_state(),2);
+            Verification   verification = userMapper.getVer(checkUser.getUserId());
+              UserVo userVo =new UserVo(checkUser.getUserId(),checkUser.getUserName(),checkUser.getUserPassword(),checkUser.getPhoneModel()
+                      ,checkUser.getPictureUrl(),checkUser.getDataTime(),checkUser.getUserSex(),checkUser.getUserPhone(),verification.getUserToken(),
+                      verification.getUserGesture(),verification.getBindingState(),2);
                    data.put("userVo",userVo);
               return ResponseResult.success(data);
           }
@@ -130,7 +133,7 @@ public class UserService {
     public ResponseResult upUser( User  user,String user_token) throws Exception{
         log.info("-------修改用户资料 -------");
        try {
-           if (!verification(user_token,user.getUser_id())){
+           if (!verification(user_token,user.getUserId())){
 
                log.info("-------修改用户资料 -------进来了");
                return ResponseResult.failure(ResultCode.LOGIN_DATE);
@@ -138,7 +141,7 @@ public class UserService {
            int index=userMapper.upUser(user);
             if (index>0){
                 log.info("-------修改成功 -------");
-                User user1 =userMapper.queryUers(user.getUser_id());
+                User user1 =userMapper.queryUers(user.getUserId());
                 Map<String, Object> data = new HashMap<String, Object>();
                 data.put("user",user1);
                 return  ResponseResult.success(data);
@@ -213,7 +216,7 @@ public class UserService {
     public  ResponseResult modifyVer(Verification  verification)throws  Exception{
         try {
             //验证token
-            if (verification(verification.getUser_token(),verification.getUser_id())){
+            if (verification(verification.getUserToken(),verification.getUserId())){
                 log.info("验证成功");
                 if (userMapper.modifyVer(verification)>0){
                     return ResponseResult.success();
@@ -276,9 +279,9 @@ public class UserService {
             if (verification1==null) {
                 return false;
             }
-            if (!verification1.getUser_token().equals(user_token)||verification1.getUser_token()==null) {
+            if (!verification1.getUserToken().equals(user_token)||verification1.getUserToken()==null) {
                 log.info("user_token>>>>>"+user_token);
-                log.info("token失效111"+verification1.getUser_token());
+                log.info("token失效111"+verification1.getUserToken());
                 return false;
             }
         }catch (Exception e){
@@ -293,7 +296,7 @@ public class UserService {
         long l = Long.parseLong( sub )/1000;
         long i= System.currentTimeMillis()/1000;
         if (i-l<2592000){
-            log.info("成功"+verification1.getUser_token());
+            log.info("成功"+verification1.getUserToken());
             return true;
         }
 
@@ -306,3 +309,4 @@ public class UserService {
 ////        return str == null || str.trim().length() == 0 || "null".equals(str.trim());
 ////    }
 }
+

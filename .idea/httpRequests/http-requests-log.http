@@ -1,0 +1,40 @@
+POST http://123.56.73.147:8012/equipment/test
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-04-17T041301.200.txt
+
+###
+
+POST http://123.56.73.147:8012/equipment/test
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-04-17T041300.200.txt
+
+###
+
+POST http://123.56.73.147:8012/equipment/test
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-04-17T041259-1.200.txt
+
+###
+
+POST http://123.56.73.147:8012/equipment/test
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-04-17T041259.200.txt
+
+###
+
+POST http://123.56.73.147:8012/equipment/test
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-04-17T041245.200.txt
+
+###
+
