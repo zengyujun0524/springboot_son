@@ -42,9 +42,9 @@ public class UserController {
      * 手机注册登入
      *
      * 
-     * @param user_phone
-     * @param phone_model
-     * @param picture_url
+     * @param userPhone
+     * @param phoneModel
+     * @param pictureUrl
      * @param registerCode
      * @return
      * @throws Exception
@@ -53,28 +53,28 @@ public class UserController {
     @RequestMapping(value = "/registerPhone", method = RequestMethod.POST)
     @ApiOperation(value = "手机用户注册或者登入", notes = "根据url信息注册手机用户")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "user_phone", value = "手机号", dataType = "String", paramType = "query"),
-            @ApiImplicitParam(name = "phone_model", value = "手机型号", dataType = "String", paramType = "query"),
-            @ApiImplicitParam(name = "picture_url", value = "头像路径", dataType = "String", paramType = "query"),
+            @ApiImplicitParam(name = "userPhone", value = "手机号", dataType = "String", paramType = "query"),
+            @ApiImplicitParam(name = "phoneModel", value = "手机型号", dataType = "String", paramType = "query"),
+            @ApiImplicitParam(name = "pictureUrl", value = "头像路径", dataType = "String", paramType = "query"),
             @ApiImplicitParam(name = "registerCode", value = "验证码", dataType = "Integer", paramType = "query")
     })
-    public ResponseResult registerPhone(String user_phone, String phone_model,
-                                        String picture_url, Integer registerCode) throws Exception {
+    public ResponseResult registerPhone(String userPhone, String phoneModel,
+                                        String pictureUrl, Integer registerCode) throws Exception {
         if (registerCode == 888888) {
 
         } else {
-            log.info("redisService.getExpire(user_phone)>"+redisService.getExpire(user_phone));
+            log.info("redisService.getExpire(userPhone)>"+redisService.getExpire(userPhone));
 
-            if (null == redisService.get(user_phone)) {
+            if (null == redisService.get(userPhone)) {
                 log.info("2进来来++++++");
 //                验证注册的手机号码和发送短信的手机号码是否一致
                 return ResponseResult.failure(ResultCode.REGISTERPHONEANDSENDPHONE_DIFF);
             }
-          //  log.info("(Integer) redisService.get(\"user_phone\")"+(Integer) redisService.get(user_phone)+"<输入的注册码"+registerCode);
+          //  log.info("(Integer) redisService.get(\"userPhone\")"+(Integer) redisService.get(userPhone)+"<输入的注册码"+registerCode);
             //  判断验证码的时效性和准确性（发送时间、发送的验证码、用户传入的验证码
 
-           log.info(user_phone+"redisService.getExpire(user_phone)>>"+redisService.getExpire(user_phone)+"<edisService.get(user_phone)>"+redisService.get(user_phone));
-            Map<String, String> result = VerificationUtils.SMSVerification(redisService.getExpire(user_phone), Integer.parseInt(String.valueOf(redisService.get(user_phone))), registerCode);
+           log.info(userPhone+"redisService.getExpire(userPhone)>>"+redisService.getExpire(userPhone)+"<edisService.get(userPhone)>"+redisService.get(userPhone));
+            Map<String, String> result = VerificationUtils.SMSVerification(redisService.getExpire(userPhone), Integer.parseInt(String.valueOf(redisService.get(userPhone))), registerCode);
             if ("success".equals(result.get("result"))) {
                 log.info("--------验证码通过--------random：" + UserController.random + ",registerCode：" + registerCode);
             } else if ("TimeOut".equals(result.get("result"))) {
@@ -91,10 +91,10 @@ public class UserController {
         // 非空判断传入信息
 
         User user = new User();
-        user.setUserPhone(user_phone);
+        user.setUserPhone(userPhone);
         user.setUserName("请设置");
-        user.setPhoneModel(phone_model);
-        user.setPictureUrl(picture_url);
+        user.setPhoneModel(phoneModel);
+        user.setPictureUrl(pictureUrl);
         user.setUserPassword("");
         user.setUserSex(3);
 
@@ -106,16 +106,16 @@ public class UserController {
     /**
      * 查询用户
      *
-     * @param user_name
+     * @param userName
      * @return
      * @throws Exception
      */
     @RequestMapping(value = "/selectUser", method = RequestMethod.POST)
     @ApiOperation(value = "查询用户", notes = "（私用接口）")
-    @ApiImplicitParams({@ApiImplicitParam(name = "user_name", value = "手机号", dataType = "String", paramType = "query")})
-    public ResponseResult phoneLogin(String user_name) throws Exception {
+    @ApiImplicitParams({@ApiImplicitParam(name = "userName", value = "手机号", dataType = "String", paramType = "query")})
+    public ResponseResult phoneLogin(String userName) throws Exception {
 
-        return userService.selectUser(user_name);
+        return userService.selectUser(userName);
     }
 
     /**
@@ -160,75 +160,75 @@ public class UserController {
     /**
      * 修改用户资料
      *
-     * @param picture_url
-     * @param user_sex
-     * @param user_name
-     * @param user_token
-     * @param user_id
+     * @param pictureUrl
+     * @param userSex
+     * @param userName
+     * @param userToken
+     * @param userId
      * @return
      */
     @RequestMapping(value = "/upUser", method = RequestMethod.POST)
-    @ApiOperation(value = "修改用户资料", notes = "用户操作 (除user_id和user_token外都是非必填)")
+    @ApiOperation(value = "修改用户资料", notes = "用户操作 (除userId和userToken外都是非必填)")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "picture_url", value = "头像路径", dataType = "String", paramType = "query"),
-            @ApiImplicitParam(name = "user_sex", value = "性别（1：男 ,2：女）", dataType = "Integer", paramType = "query"),
-            @ApiImplicitParam(name = "user_name", value = "用户昵称", dataType = "String", paramType = "query"),
-            @ApiImplicitParam(name = "user_id", value = "*用户ID", dataType = "String", paramType = "query"),
-            @ApiImplicitParam(name = "user_token", value = "*身份令牌Token", dataType = "String", paramType = "query")})
-    public ResponseResult upUser(String picture_url, Integer user_sex, String user_name, String user_token, Integer user_id) throws Exception {
+            @ApiImplicitParam(name = "pictureUrl", value = "头像路径", dataType = "String", paramType = "query"),
+            @ApiImplicitParam(name = "userSex", value = "性别（1：男 ,2：女）", dataType = "Integer", paramType = "query"),
+            @ApiImplicitParam(name = "userName", value = "用户昵称", dataType = "String", paramType = "query"),
+            @ApiImplicitParam(name = "userId", value = "*用户ID", dataType = "String", paramType = "query"),
+            @ApiImplicitParam(name = "userToken", value = "*身份令牌Token", dataType = "String", paramType = "query")})
+    public ResponseResult upUser(String pictureUrl, Integer userSex, String userName, String userToken, Integer userId) throws Exception {
 
         User user = new User();
 
-        user.setUserSex(user_sex);
-        if (ObjectUtils.isEmpty(picture_url)) {
-            log.info("picture_url>>" + picture_url);
+        user.setUserSex(userSex);
+        if (ObjectUtils.isEmpty(pictureUrl)) {
+            log.info("pictureUrl>>" + pictureUrl);
             user.setPictureUrl(null);
         } else {
-            user.setPictureUrl(picture_url);
+            user.setPictureUrl(pictureUrl);
         }
-        if (ObjectUtils.isEmpty(user_name)) {
-            log.info("user_name>>" + user_name);
+        if (ObjectUtils.isEmpty(userName)) {
+            log.info("userName>>" + userName);
             user.setUserName(null);
         } else {
-            user.setUserName(user_name);
+            user.setUserName(userName);
         }
 
 
-        user.setUserId(user_id);
-        return userService.upUser(user,user_token);
+        user.setUserId(userId);
+        return userService.upUser(user,userToken);
     }
 
     /**
      * 修改手机号
      *
-     * @param user_token
-     * @param user_id
-     * @param user_phone
+     * @param userToken
+     * @param userId
+     * @param userPhone
      * @return
      */
     @RequestMapping(value = "/modifyPhone", method = RequestMethod.POST)
-    @ApiOperation(value = "修改用户手机号", notes = "用户操作 (除user_id和user_token外都是非必填)")
+    @ApiOperation(value = "修改用户手机号", notes = "用户操作 (除userId和userToken外都是非必填)")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "user_phone", value = "*手机号", dataType = "String", paramType = "query"),
-            @ApiImplicitParam(name = "user_id", value = "*用户ID", dataType = "String", paramType = "query"),
-            @ApiImplicitParam(name = "user_token", value = "*身份令牌Token", dataType = "String", paramType = "query"),
+            @ApiImplicitParam(name = "userPhone", value = "*手机号", dataType = "String", paramType = "query"),
+            @ApiImplicitParam(name = "userId", value = "*用户ID", dataType = "String", paramType = "query"),
+            @ApiImplicitParam(name = "userToken", value = "*身份令牌Token", dataType = "String", paramType = "query"),
             @ApiImplicitParam(name = "registerCode", value = "*验证码", dataType = "Integer", paramType = "query")})
-    public ResponseResult modifyPhone(String user_token, Integer user_id, String user_phone, Integer registerCode) throws Exception {
-     /*   if (!token.verification(user_token)) {
+    public ResponseResult modifyPhone(String userToken, Integer userId, String userPhone, Integer registerCode) throws Exception {
+     /*   if (!token.verification(userToken)) {
             return ResponseResult.failure(ResultCode.LOGIN_DATE);
         }*/
         if (registerCode == 888888) {
 
 
         } else {
-            if (null == redisService.get(user_phone)) {
+            if (null == redisService.get(userPhone)) {
                 log.info("进来来++++++");
 //                验证注册的手机号码和发送短信的手机号码是否一致
                 return ResponseResult.failure(ResultCode.REGISTERPHONEANDSENDPHONE_DIFF);
             }
-            log.info("(Integer) redisService.get(\"user_phone\")"+(Integer) redisService.get("user_phone")+"输入的注册码"+registerCode);
+            log.info("(Integer) redisService.get(\"userPhone\")"+(Integer) redisService.get("userPhone")+"输入的注册码"+registerCode);
             //  判断验证码的时效性和准确性（发送时间、发送的验证码、用户传入的验证码）
-            Map<String, String> result = VerificationUtils.SMSVerification(redisService.getExpire("user_phone"), (Integer) redisService.get("user_phone"), registerCode);
+            Map<String, String> result = VerificationUtils.SMSVerification(redisService.getExpire("userPhone"), (Integer) redisService.get("userPhone"), registerCode);
             if ("success".equals(result.get("result"))) {
                 log.info("--------验证码通过--------random：" + UserController.random + ",registerCode：" + registerCode);
             } else if ("TimeOut".equals(result.get("result"))) {
@@ -239,95 +239,95 @@ public class UserController {
                 return ResponseResult.failure(ResultCode.VERIFICATIONCODE);
             }
         }
-        return userService.modifyPhone(user_id, user_phone,user_token);
+        return userService.modifyPhone(userId, userPhone,userToken);
     }
 
     /**
      * 用户登出
      *
-     * @param user_id
+     * @param userId
      * @return
      * @throws Exception
      */
     @RequestMapping(value = "/userLogout", method = RequestMethod.POST)
-    @ApiOperation(value = "用户登出", notes = "用户操作 (除user_id是必填项)")
+    @ApiOperation(value = "用户登出", notes = "用户操作 (除userId是必填项)")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "user_id", value = "*用户ID", dataType = "Integer", paramType = "query"),
-            @ApiImplicitParam(name = "user_token", value = "*身份令牌Token", dataType = "String", paramType = "query")
+            @ApiImplicitParam(name = "userId", value = "*用户ID", dataType = "Integer", paramType = "query"),
+            @ApiImplicitParam(name = "userToken", value = "*身份令牌Token", dataType = "String", paramType = "query")
     })
-    public ResponseResult userLogout(Integer user_id,String user_token) throws Exception {
-         if (ObjectUtils.isEmpty(user_id)||ObjectUtils.isEmpty(user_token))
+    public ResponseResult userLogout(Integer userId,String userToken) throws Exception {
+         if (ObjectUtils.isEmpty(userId)||ObjectUtils.isEmpty(userToken))
              return  ResponseResult.failure(ResultCode.NULL_ERR);
 
-        return userService.userLogout(user_id,user_token);
+        return userService.userLogout(userId,userToken);
     }
 
     /**
      * 修改手势密码
-     * @param user_id
-     * @param user_token
-     * @param user_gesture
+     * @param userId
+     * @param userToken
+     * @param userGesture
      * @return
      * @throws Exception
      */
     @RequestMapping(value = "/modifyVer", method = RequestMethod.POST)
     @ApiOperation(value = "修改手势密码", notes = "用户操作 (修改手势密码)")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "user_id", value = "*用户ID", dataType = "Integer", paramType = "query"),
-            @ApiImplicitParam(name = "user_token", value = "*身份令牌Token", dataType = "String", paramType = "query"),
-            @ApiImplicitParam(name = "user_gesture", value = "*手势密码", dataType = "String", paramType = "query")
+            @ApiImplicitParam(name = "userId", value = "*用户ID", dataType = "Integer", paramType = "query"),
+            @ApiImplicitParam(name = "userToken", value = "*身份令牌Token", dataType = "String", paramType = "query"),
+            @ApiImplicitParam(name = "userGesture", value = "*手势密码", dataType = "String", paramType = "query")
     })
-    public  ResponseResult modifyVer(Integer user_id,String user_token,String user_gesture)throws  Exception{
+    public  ResponseResult modifyVer(Integer userId,String userToken,String userGesture)throws  Exception{
         Verification verification = new Verification();
-        if (user_gesture.equals("0")){
+        if (userGesture.equals("0")){
             verification.setBindingState(0);
         }else {
             verification.setBindingState(1);
         }
-        verification.setUserGesture(user_gesture);
-        verification.setUserId(user_id);
-        verification.setUserToken(user_token);
+        verification.setUserGesture(userGesture);
+        verification.setUserId(userId);
+        verification.setUserToken(userToken);
         return userService.modifyVer(verification);
     }
 
     /**
      * 通过token验证手机号
-     * @param user_id
-     * @param user_token
+     * @param userId
+     * @param userToken
      * @return
      * @throws Exception
      */
     @RequestMapping(value = "/getUserByToken", method = RequestMethod.POST)
     @ApiOperation(value = "通过token验证手机号", notes = "验证操作")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "user_id", value = "*用户ID", dataType = "Integer", paramType = "query"),
-            @ApiImplicitParam(name = "user_token", value = "*身份令牌Token", dataType = "String", paramType = "query")
+            @ApiImplicitParam(name = "userId", value = "*用户ID", dataType = "Integer", paramType = "query"),
+            @ApiImplicitParam(name = "userToken", value = "*身份令牌Token", dataType = "String", paramType = "query")
     })
-    public  ResponseResult getUserByToken(Integer user_id,String user_token)throws  Exception{
-        if (ObjectUtils.isEmpty(user_id)||ObjectUtils.isEmpty(user_token))
+    public  ResponseResult getUserByToken(Integer userId,String userToken)throws  Exception{
+        if (ObjectUtils.isEmpty(userId)||ObjectUtils.isEmpty(userToken))
             return  ResponseResult.failure(ResultCode.NULL_ERR);
 
-        return  userService.getUserByToken(user_id,user_token);
+        return  userService.getUserByToken(userId,userToken);
     }
 
 
     /**
-     * 修改push_token
-     * @param user_id
-     * @param push_token
+     * 修改pushToken
+     * @param userId
+     * @param pushToken
      * @return
      * @throws Exception
      */
     @RequestMapping(value = "/modifyPush", method = RequestMethod.POST)
     @ApiOperation(value = "通过token验证手机号", notes = "验证操作")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "user_id", value = "*用户ID", dataType = "Integer", paramType = "query"),
-            @ApiImplicitParam(name = "push_token", value = "用户token", dataType = "String", paramType = "query")
+            @ApiImplicitParam(name = "userId", value = "*用户ID", dataType = "Integer", paramType = "query"),
+            @ApiImplicitParam(name = "pushToken", value = "用户token", dataType = "String", paramType = "query")
     })
-    public  ResponseResult modifyPush(Integer user_id,String push_token)throws Exception{
-        if (ObjectUtils.isEmpty(user_id)||ObjectUtils.isEmpty(push_token))
+    public  ResponseResult modifyPush(Integer userId,String pushToken)throws Exception{
+        if (ObjectUtils.isEmpty(userId)||ObjectUtils.isEmpty(pushToken))
             return  ResponseResult.failure(ResultCode.NULL_ERR);
-        return  userService.modifyPush(user_id,push_token);
+        return  userService.modifyPush(userId,pushToken);
     }
 
 

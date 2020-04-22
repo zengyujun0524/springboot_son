@@ -12,7 +12,7 @@
     </sql>
     <select id="equipmentInfo"
             resultType="com.example.springboot_son.entity.Equipment" resultMap="EquipmentMap">
-        <if test="user_id !=null">
+        <if test="userId !=null">
 
             SELECT
             DISTINCT e.equipment_id,e.equipment_name,e.equipment_describe,e.equipment_pictures,r.state

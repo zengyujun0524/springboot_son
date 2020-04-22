@@ -36,7 +36,7 @@ public class VideoInfo implements Serializable {
     /**
     * 点赞数量
     */
-    private String agreeNumber;
+    private Integer agreeNumber;
     /**
     * 封面url
     */
@@ -45,6 +45,11 @@ public class VideoInfo implements Serializable {
     * 用户id
     */
     private Integer userId;
+    /**
+     * 作者头像
+     */
+    private String authorPictureUrl;
+
 
 
 }

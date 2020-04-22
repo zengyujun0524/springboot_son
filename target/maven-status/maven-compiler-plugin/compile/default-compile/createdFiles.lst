@@ -1,4 +1,5 @@
 com/example/springboot_son/utils/sms/VoiceFileUploader.class
+com/example/springboot_son/web/VideoInfoController.class
 com/example/springboot_son/test/QcloudSmsTest2.class
 com/example/springboot_son/utils/sms/VoiceFileStatusResult.class
 com/example/springboot_son/utils/sms/httpclient/HTTPRequest.class
@@ -23,19 +24,23 @@ com/example/springboot_son/vo/MainPageVo.class
 com/example/springboot_son/web/SerialNumberController.class
 com/example/springboot_son/utils/youmen/push/android/AndroidUnicast.class
 com/example/springboot_son/utils/youmen/push/android/AndroidGroupcast.class
+com/example/springboot_son/web/AliPayController.class
 com/example/springboot_son/utils/sms/VoiceFileUploader$ContentType.class
 com/example/springboot_son/test/QcloudSmsTest.class
 com/example/springboot_son/utils/redis/RedisUtil.class
 com/example/springboot_son/entity/Relation.class
+com/example/springboot_son/mapper/VideoInfoMapper.class
 com/example/springboot_son/utils/sms/SmsResultBase.class
 com/example/springboot_son/utils/youmen/push/Demo.class
 com/example/springboot_son/utils/MD5Utils.class
 com/example/springboot_son/entity/Verification.class
+com/example/springboot_son/entity/VideoInfo.class
 com/example/springboot_son/utils/ObjectUtils.class
 com/example/springboot_son/utils/youmen/push/ios/IOSCustomizedcast.class
 com/example/springboot_son/utils/redis/JwtUtil.class
 com/example/springboot_son/configuration/RedisConfig.class
 com/example/springboot_son/utils/youmen/push/App.class
+com/example/springboot_son/service/VideoInfoService.class
 com/example/springboot_son/utils/sms/SmsMobileStatusPuller.class
 com/example/springboot_son/utils/sms/TtsVoiceSenderResult.class
 com/example/springboot_son/utils/youmen/push/android/AndroidCustomizedcast.class
@@ -66,6 +71,7 @@ com/example/springboot_son/utils/youmen/push/UmengNotification.class
 com/example/springboot_son/web/EquipmentController.class
 com/example/springboot_son/utils/sms/SmsStatusPullCallbackResult.class
 com/example/springboot_son/utils/youmen/push/android/AndroidFilecast.class
+com/example/springboot_son/utils/AlipayConfig.class
 com/example/springboot_son/service/EquipmentService.class
 com/example/springboot_son/utils/youmen/push/IOSNotification.class
 com/example/springboot_son/mapper/RelationMapper.class

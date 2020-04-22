@@ -13,45 +13,45 @@ import javax.persistence.Entity;
 @Entity
 @Data
 public class UserVo {
-    @ApiModelProperty(value = "主键",name = "user_id",dataType = "Integer")
-    private    Integer user_id;
-    @ApiModelProperty(value = "用户姓名",name = "user_name",dataType = "String")
-    private    String user_name;
-    @ApiModelProperty(value = "用户密码",name = "user_password",dataType ="String" )
-    private  String user_password;
-    //    @ApiModelProperty(value = "用户的toke",name ="user_token" ,dataType = "String")
-//    private  String user_token;
-    @ApiModelProperty(value = "手机型号",name = "phone_model",dataType = "String")
-    private  String phone_model;
-    @ApiModelProperty(value = "头像路径",name = "picture_url",dataType ="String")
-    private  String picture_url;
-    @ApiModelProperty(value = "注册时间",name ="data_time",dataType = "String")
-    private  String data_time;
-    @ApiModelProperty(value = "性别（0男，1女）",name = "user_sex",dataType = "Integer")
-    private  Integer user_sex;
-    @ApiModelProperty(value = "手机号",name = "user_phone",dataType = "String")
-    private  String user_phone;
-    @ApiModelProperty(value = "用户token",name = "user_token",dataType = "String")
-    private   String user_token;
-    @ApiModelProperty(value = "主键",name = "user_id",dataType = "String")
-    private  String user_gesture;
-    @ApiModelProperty(value = "绑定状态",name = "binding_state",dataType = "Integer")
-    private  Integer binding_state;
+    @ApiModelProperty(value = "主键",name = "userId",dataType = "Integer")
+    private    Integer userId;
+    @ApiModelProperty(value = "用户姓名",name = "userName",dataType = "String")
+    private    String userName;
+    @ApiModelProperty(value = "用户密码",name = "userPassword",dataType ="String" )
+    private  String userPassword;
+    //    @ApiModelProperty(value = "用户的toke",name ="userToken" ,dataType = "String")
+//    private  String userToken;
+    @ApiModelProperty(value = "手机型号",name = "phoneModel",dataType = "String")
+    private  String phoneModel;
+    @ApiModelProperty(value = "头像路径",name = "pictureUrl",dataType ="String")
+    private  String pictureUrl;
+    @ApiModelProperty(value = "注册时间",name ="dataTime",dataType = "String")
+    private  String dataTime;
+    @ApiModelProperty(value = "性别（0男，1女）",name = "userSex",dataType = "Integer")
+    private  Integer userSex;
+    @ApiModelProperty(value = "手机号",name = "userPhone",dataType = "String")
+    private  String userPhone;
+    @ApiModelProperty(value = "用户token",name = "userToken",dataType = "String")
+    private   String userToken;
+    @ApiModelProperty(value = "主键",name = "userId",dataType = "String")
+    private  String userGesture;
+    @ApiModelProperty(value = "绑定状态",name = "bindingState",dataType = "Integer")
+    private  Integer bindingState;
     @ApiModelProperty(value = "登入或者注册",name = "result",dataType = "Integer")
     private  Integer result;
 
-    public UserVo(Integer user_id, String user_name, String user_password, String phone_model, String picture_url, String data_time, Integer user_sex, String user_phone, String user_token, String user_gesture, Integer binding_state, Integer result) {
-        this.user_id = user_id;
-        this.user_name = user_name;
-        this.user_password = user_password;
-        this.phone_model = phone_model;
-        this.picture_url = picture_url;
-        this.data_time = data_time;
-        this.user_sex = user_sex;
-        this.user_phone = user_phone;
-        this.user_token = user_token;
-        this.user_gesture = user_gesture;
-        this.binding_state = binding_state;
+    public UserVo(Integer userId, String userName, String userPassword, String phoneModel, String pictureUrl, String dataTime, Integer userSex, String userPhone, String userToken, String userGesture, Integer bindingState, Integer result) {
+        this.userId = userId;
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.phoneModel = phoneModel;
+        this.pictureUrl = pictureUrl;
+        this.dataTime = dataTime;
+        this.userSex = userSex;
+        this.userPhone = userPhone;
+        this.userToken = userToken;
+        this.userGesture = userGesture;
+        this.bindingState = bindingState;
         this.result = result;
     }
 }

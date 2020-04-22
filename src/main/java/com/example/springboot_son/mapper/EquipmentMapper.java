@@ -16,9 +16,9 @@ import java.util.List;
 @Mapper
 public interface EquipmentMapper {
    //进入主界面获取设备信息
-    List<Equipment> equipmentInfo(Integer userId) throws Exception;
+    List<Equipment> equipmentInfo(@Param("userId")Integer userId) throws Exception;
     //查询用户绑定设备
-    List<Equipment>bindingDevice(Integer userId, Integer equipmentId) throws Exception;
+    List<Equipment>bindingDevice(@Param("userId") Integer userId, Integer equipmentId) throws Exception;
 
 
 

@@ -11,12 +11,13 @@
         <result property="agreeNumber" column="agree_number" jdbcType="VARCHAR"/>
         <result property="pageUrl" column="page_url" jdbcType="VARCHAR"/>
         <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="authorPictureUrl" column="author_picture_url" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--查询单个-->
     <select id="queryById" resultMap="VideoInfoMap">
         select
-          video_id, video_url, video_title, video_describe, upload_time, agree_number, page_url, user_id
+          video_id, video_url, video_title, video_describe, upload_time, agree_number, page_url, user_id, author_picture_url
         from baba_app.video_info
         where video_id = #{videoId}
     </select>
@@ -24,7 +25,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="VideoInfoMap">
         select
-          video_id, video_url, video_title, video_describe, upload_time, agree_number, page_url, user_id
+          video_id, video_url, video_title, video_describe, upload_time, agree_number, page_url, user_id, author_picture_url
         from baba_app.video_info
         limit #{offset}, #{limit}
     </select>
@@ -32,7 +33,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="VideoInfoMap">
         select
-          video_id, video_url, video_title, video_describe, upload_time, agree_number, page_url, user_id
+        video_id, video_url, video_title, video_describe, upload_time, agree_number, page_url, user_id, author_picture_url
         from baba_app.video_info
         <where>
             <if test="videoId != null">
@@ -59,13 +60,16 @@
             <if test="userId != null">
                 and user_id = #{userId}
             </if>
+            <if test="authorPictureUrl != null and authorPictureUrl != ''">
+                and author_picture_url = #{authorPictureUrl}
+            </if>
         </where>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="videoId" useGeneratedKeys="true">
-        insert into baba_app.video_info(video_url, video_title, video_describe, upload_time, agree_number, page_url, user_id)
-        values (#{videoUrl}, #{videoTitle}, #{videoDescribe}, #{uploadTime}, #{agreeNumber}, #{pageUrl}, #{userId})
+        insert into baba_app.video_info(video_url, video_title, video_describe, upload_time, agree_number, page_url, author_picture_url)
+        values (#{videoUrl}, #{videoTitle}, #{videoDescribe}, #{uploadTime}, #{agreeNumber}, #{pageUrl}, #{authorPictureUrl})
     </insert>
 
     <!--通过主键修改数据-->
@@ -90,8 +94,8 @@
             <if test="pageUrl != null and pageUrl != ''">
                 page_url = #{pageUrl},
             </if>
-            <if test="userId != null">
-                user_id = #{userId},
+            <if test="authorPictureUrl != null and authorPictureUrl != ''">
+                author_picture_url = #{authorPictureUrl},
             </if>
         </set>
         where video_id = #{videoId}

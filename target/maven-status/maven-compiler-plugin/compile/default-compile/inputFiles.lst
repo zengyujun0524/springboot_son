@@ -1,3 +1,4 @@
+/Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/web/VideoInfoController.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/sms/SmsStatusPuller.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/MD5Utils.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/sms/SmsSenderUtil.java
@@ -22,12 +23,14 @@
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/UrlSend.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/redis/RedisUtil.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/web/SerialNumberController.java
+/Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/mapper/VideoInfoMapper.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/configuration/RedisConfig.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/sms/httpclient/HTTPException.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/web/UserController.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/ResponseResult.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/sms/VoiceFileUploader.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/TokenVerification.java
+/Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/web/AliPayController.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/entity/Relation.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/sms/httpclient/ProxyHTTPClient.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/entity/Verification.java
@@ -38,6 +41,7 @@
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/VerificationUtils.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/youmen/push/AndroidNotification.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/sms/httpclient/HTTPResponse.java
+/Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/service/VideoInfoService.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/sms/httpclient/PoolingHTTPClient.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/youmen/push/ios/IOSUnicast.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/youmen/push/android/AndroidUnicast.java
@@ -55,10 +59,12 @@
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/youmen/push/ios/IOSCustomizedcast.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/service/SerialNumberService.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/youmen/push/App.java
+/Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/configuration/HttpsConfig.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/sms/SmsBase.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/sms/httpclient/HTTPClient.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/FileToMD5.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/vo/UserVo.java
+/Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/AlipayConfig.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/youmen/push/android/AndroidBroadcast.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/ObjectUtils.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/test/QcloudSmsTest2.java
@@ -72,6 +78,7 @@
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/sms/FileVoiceSenderResult.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/sms/TtsVoiceSender.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/youmen/push/IOSNotification.java
+/Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/entity/VideoInfo.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/mapper/SerialNumberMapper.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/mapper/EquipmentMapper.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/ResultCode.java

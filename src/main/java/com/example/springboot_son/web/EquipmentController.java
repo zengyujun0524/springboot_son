@@ -30,46 +30,46 @@ public class EquipmentController {
       TokenVerification token= new TokenVerification();
     /**
             *  查看设备信息
-            * @param user_id
-            * @param user_token
+            * @param userId
+            * @param userToken
             * @return
             * @throws Exception
             */
             @RequestMapping(value = "/equipmentInfo", method = RequestMethod.POST)
             @ApiOperation(value = "主界面商品展示", notes = "直接获取设备信息")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "user_id", value = "用户ID", dataType = "Integer", paramType = "query"),
-            @ApiImplicitParam(name = "user_token", value = "用户token", dataType = "Integer", paramType = "query")
+            @ApiImplicitParam(name = "userId", value = "用户ID", dataType = "Integer", paramType = "query"),
+            @ApiImplicitParam(name = "userToken", value = "用户token", dataType = "Integer", paramType = "query")
     })
-    public ResponseResult  equipmentInfo(Integer user_id,String user_token) throws Exception {
+    public ResponseResult  equipmentInfo(Integer userId,String userToken) throws Exception {
         //查询所有设备信息
 
-        return equipmentService.equipmentInfo(user_id);
+        return equipmentService.equipmentInfo(userId);
 
 
     }
 
     /**
      * 查询用户绑定设备
-     * @param user_id
-     * @param user_token
-     * @param equipment_id
+     * @param userId
+     * @param userToken
+     * @param equipmentId
      * @return
      * @throws Exception
      */
     @RequestMapping(value = "/bindingDevice", method = RequestMethod.POST)
     @ApiOperation(value = "查询用户绑定设备", notes = "绑定页面")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "user_id", value = "*用户ID", dataType = "Integer", paramType = "query"),
-            @ApiImplicitParam(name = "user_token", value = "*用户token", dataType = "Integer", paramType = "query"),
-            @ApiImplicitParam(name = "equipment_id", value = "*设备ID", dataType = "Integer", paramType = "query")
+            @ApiImplicitParam(name = "userId", value = "*用户ID", dataType = "Integer", paramType = "query"),
+            @ApiImplicitParam(name = "userToken", value = "*用户token", dataType = "Integer", paramType = "query"),
+            @ApiImplicitParam(name = "equipmentId", value = "*设备ID", dataType = "Integer", paramType = "query")
     })
 
- public  ResponseResult bindingDevice(Integer user_id,String user_token,Integer equipment_id) throws Exception {
-           if (ObjectUtils.isEmpty(user_id)||ObjectUtils.isEmpty(equipment_id))
+ public  ResponseResult bindingDevice(Integer userId,String userToken,Integer equipmentId) throws Exception {
+           if (ObjectUtils.isEmpty(userId)||ObjectUtils.isEmpty(equipmentId))
                return ResponseResult.failure(ResultCode.NULL_ERR);
 
-     return equipmentService.bindingDevice(user_id,equipment_id,user_token);
+     return equipmentService.bindingDevice(userId,equipmentId,userToken);
  }
 
 
