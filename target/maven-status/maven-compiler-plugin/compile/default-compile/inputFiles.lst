@@ -26,6 +26,7 @@
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/mapper/VideoInfoMapper.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/configuration/RedisConfig.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/sms/httpclient/HTTPException.java
+/Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/service/ApplicationService.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/web/UserController.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/ResponseResult.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/sms/VoiceFileUploader.java
@@ -59,6 +60,7 @@
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/youmen/push/ios/IOSCustomizedcast.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/service/SerialNumberService.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/youmen/push/App.java
+/Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/web/ApplicationController.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/configuration/HttpsConfig.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/sms/SmsBase.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/sms/httpclient/HTTPClient.java
@@ -81,6 +83,8 @@
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/entity/VideoInfo.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/mapper/SerialNumberMapper.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/mapper/EquipmentMapper.java
+/Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/mapper/ApplicationMapper.java
+/Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/entity/VideoAgree.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/ResultCode.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/test/QcloudSmsTest.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/mapper/UserMapper.java

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by cengyujun on 2020/4/20 3:45 下午
  */
 @Slf4j
-@RestController  //
+@RestController
 @RequestMapping("/AliPay")
 @Api(description = "-支付接口-")
 public class AliPayController {

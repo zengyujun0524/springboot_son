@@ -50,10 +50,12 @@ com/example/springboot_son/utils/sms/httpclient/HTTPException.class
 com/example/springboot_son/vo/UserVo.class
 com/example/springboot_son/utils/UrlSend.class
 com/example/springboot_son/utils/youmen/push/ios/IOSBroadcast.class
+com/example/springboot_son/entity/VideoAgree.class
 com/example/springboot_son/utils/sms/httpclient/DefaultHTTPClient.class
 com/example/springboot_son/utils/sms/SmsMultiSenderResult$Detail.class
 com/example/springboot_son/dto/HeadsetByAct.class
 com/example/springboot_son/service/RedisService.class
+com/example/springboot_son/web/ApplicationController.class
 com/example/springboot_son/web/UserController.class
 com/example/springboot_son/mapper/SerialNumberMapper.class
 com/example/springboot_son/utils/sms/SmsMultiSenderResult.class
@@ -69,6 +71,7 @@ com/example/springboot_son/utils/FileToMD5.class
 com/example/springboot_son/utils/youmen/push/AndroidNotification$AfterOpenAction.class
 com/example/springboot_son/utils/youmen/push/UmengNotification.class
 com/example/springboot_son/web/EquipmentController.class
+com/example/springboot_son/service/ApplicationService.class
 com/example/springboot_son/utils/sms/SmsStatusPullCallbackResult.class
 com/example/springboot_son/utils/youmen/push/android/AndroidFilecast.class
 com/example/springboot_son/utils/AlipayConfig.class
@@ -83,6 +86,7 @@ com/example/springboot_son/SpringbootSonApplication.class
 com/example/springboot_son/utils/sms/TtsVoiceSender.class
 com/example/springboot_son/utils/youmen/push/ios/IOSFilecast.class
 com/example/springboot_son/utils/sms/SmsSenderUtil.class
+com/example/springboot_son/mapper/ApplicationMapper.class
 com/example/springboot_son/utils/sms/SmsStatusPuller.class
 com/example/springboot_son/utils/sms/SmsBase.class
 com/example/springboot_son/utils/sms/SmsStatusPullCallbackResult$Callback.class

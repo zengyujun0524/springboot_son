@@ -31,7 +31,8 @@ public class DemoController {
         log.info("获取值");
 log.info(redisService.getExpire("19973559563")+"时间");
         redisService.set("19973559563","140076",(long) System.currentTimeMillis());
-       return    redisService.get("19973559563");
+
+       return    redisService.incr("19973559563");
     }
 
 }

@@ -29,7 +29,7 @@ public interface UserMapper {
     //用户登出——清空token
     Integer userLogout(int userId)throws  Exception;
     User getToken(String userToken)throws  Exception;
-  //插入token
+    //插入token
     Integer    inserVer(int userId,String userToken)throws  Exception;
     //修改验证数据
     Integer modifyVer(Verification  verification)throws  Exception;

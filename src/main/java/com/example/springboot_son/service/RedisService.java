@@ -2,7 +2,9 @@ package com.example.springboot_son.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.*;
+import org.springframework.data.redis.support.atomic.RedisAtomicLong;
 import org.springframework.stereotype.Service;
+import redis.clients.jedis.ShardedJedis;
 
 import java.io.Serializable;
 import java.util.List;
@@ -190,6 +192,22 @@ public class RedisService {
             ZSetOperations<String, Object> zset = redisTemplate.opsForZSet();
         return zset.rangeByScore(key, scoure, scoure1);
     }
+
+    /**
+     * 自增
+     * @param key
+
+     * @return
+     */
+    public Long incr(String key) {
+        RedisAtomicLong entityIdCounter = new RedisAtomicLong(key, redisTemplate.getConnectionFactory());
+        Long increment = entityIdCounter.getAndIncrement();
+
+        return increment;
+    }
+
+
+
 }
 
 

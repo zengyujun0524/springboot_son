@@ -12,9 +12,14 @@
         <result property="pageUrl" column="page_url" jdbcType="VARCHAR"/>
         <result property="userId" column="user_id" jdbcType="INTEGER"/>
         <result property="authorPictureUrl" column="author_picture_url" jdbcType="VARCHAR"/>
+        <result property="isResult" column="is_rsult" jdbcType="VARCHAR"/>
+        <result property="forwardNumber" column="forward_number" jdbcType="VARCHAR"/>
+        <result property="commentNumber" column="comment_number" jdbcType="VARCHAR"/>
     </resultMap>
-
-    <!--查询单个-->
+    <insert id="insertAgree">
+        INSERT INTO  video_agree (video_id,agree_user_id,is_rsult,modify_time) VALUES(#{videoId},#{agreeUserId},#{isRsult},#{modifyTime})
+    </insert>
+    <!--查询单个 -->
     <select id="queryById" resultMap="VideoInfoMap">
         select
           video_id, video_url, video_title, video_describe, upload_time, agree_number, page_url, user_id, author_picture_url
@@ -26,8 +31,12 @@
     <select id="queryAllByLimit" resultMap="VideoInfoMap">
         select
           video_id, video_url, video_title, video_describe, upload_time, agree_number, page_url, user_id, author_picture_url
-        from baba_app.video_info
-        limit #{offset}, #{limit}
+        from baba_app.video_info  limit #{offset},#{limit}
+
+    </select>
+
+    <select id="getCount" resultType="int" >
+        select count(*) from  baba_app.video_info
     </select>
 
     <!--通过实体作为筛选条件查询-->
@@ -66,10 +75,10 @@
         </where>
     </select>
 
-    <!--新增所有列-->
+    <!--新增所有列   -->
     <insert id="insert" keyProperty="videoId" useGeneratedKeys="true">
-        insert into baba_app.video_info(video_url, video_title, video_describe, upload_time, agree_number, page_url, author_picture_url)
-        values (#{videoUrl}, #{videoTitle}, #{videoDescribe}, #{uploadTime}, #{agreeNumber}, #{pageUrl}, #{authorPictureUrl})
+        insert into baba_app.video_info(video_url, video_title, video_describe, upload_time, agree_number, page_url, author_picture_url,user_id)
+        values (#{videoUrl}, #{videoTitle}, #{videoDescribe}, #{uploadTime}, #{agreeNumber}, #{pageUrl}, #{authorPictureUrl},#{userId})
     </insert>
 
     <!--通过主键修改数据-->

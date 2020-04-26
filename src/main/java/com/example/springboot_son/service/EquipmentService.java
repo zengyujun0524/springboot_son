@@ -30,7 +30,7 @@ public class EquipmentService {
 
     @Autowired
     UserMapper userMapper;
-    /**
+    /** 写APP
      * 获取设备信息
      * @return bin
      * @throws Exception

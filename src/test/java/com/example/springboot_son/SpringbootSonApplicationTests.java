@@ -130,7 +130,7 @@ class SpringbootSonApplicationTests {
        String value = opsForHash.get("orderInfo", "orderId");
        System.out.println(value);
 
-       //存储多条数据
+       //存储多条数据 佳
        Map<String,String> map = new HashMap<>();
        map.put("createTime","2018-06-21");
        map.put("orderSn","888888");

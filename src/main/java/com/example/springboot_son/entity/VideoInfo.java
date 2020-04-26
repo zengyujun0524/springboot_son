@@ -7,12 +7,12 @@ import java.io.Serializable;
 /**
  * (VideoInfo)实体类
  *
- * @author makejava
- * @since 2020-04-21 11:54:07
+ * @author zengyujun
+ * @since 2020-04-24 17:06:52
  */
 @Data
 public class VideoInfo implements Serializable {
-    private static final long serialVersionUID = -41065126602010343L;
+    private static final long serialVersionUID = 163038849192696986L;
     /**
     * 视频ID
     */
@@ -32,7 +32,7 @@ public class VideoInfo implements Serializable {
     /**
     * 更新时间
     */
-    private String uploadTime;
+    private Integer uploadTime;
     /**
     * 点赞数量
     */
@@ -46,10 +46,17 @@ public class VideoInfo implements Serializable {
     */
     private Integer userId;
     /**
-     * 作者头像
-     */
+    * 作者头像
+    */
     private String authorPictureUrl;
-
+    /**
+     * 转发数
+     */
+    private Integer forwardNumber;
+    /**
+     * 点赞数
+     */
+    private Integer commentNumber;
 
 
 }

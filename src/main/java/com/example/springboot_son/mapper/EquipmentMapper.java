@@ -6,8 +6,7 @@
 package com.example.springboot_son.mapper;
 
 import com.example.springboot_son.entity.Equipment;
-import com.example.springboot_son.vo.MainPageVo;
-import io.swagger.models.auth.In;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

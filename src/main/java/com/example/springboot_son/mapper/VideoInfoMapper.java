@@ -1,6 +1,7 @@
 package com.example.springboot_son.mapper;
 
 
+import com.example.springboot_son.entity.VideoAgree;
 import com.example.springboot_son.entity.VideoInfo;
 import org.apache.ibatis.annotations.Param;
 
@@ -25,11 +26,11 @@ public interface VideoInfoMapper {
     /**
      * 查询指定行数据
      *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
      * @return 对象列表
      */
-    List<VideoInfo> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
+    List<VideoInfo> queryAllByLimit(@Param("offset") int offset,@Param("limit") int limit);
+
+    int getCount();
 
 
     /**
@@ -46,7 +47,7 @@ public interface VideoInfoMapper {
      * @param videoInfo 实例对象
      * @return 影响行数
      */
-    int insert(VideoInfo videoInfo);
+    int insert(VideoInfo videoInfo)throws  Exception;
 
     /**
      * 修改数据
@@ -63,5 +64,7 @@ public interface VideoInfoMapper {
      * @return 影响行数
      */
     int deleteById(Long videoId);
+
+    int insertAgree(VideoAgree videoAgree)throws  Exception;
 
 }
