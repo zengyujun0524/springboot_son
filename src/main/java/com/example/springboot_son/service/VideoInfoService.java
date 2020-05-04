@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.*;
 
 /**
@@ -22,7 +23,7 @@ import java.util.*;
 @Service
 public class VideoInfoService {
 
-    @Autowired
+    @Resource
     VideoInfoMapper   videoInfoMapper;
 
     //以1分钟的频率执行任务
@@ -62,11 +63,13 @@ public class VideoInfoService {
     /**
      * 点赞
      * @param videoAgree
-     * @return不
+     * @return
      * @throws Exception
      */
     public  ResponseResult insertAgree(VideoAgree videoAgree)throws Exception{
         try {
+            //点赞逻
+
             return videoInfoMapper.insertAgree(videoAgree)>0?ResponseResult.success():ResponseResult.failure(ResultCode.NULL_ERR);
         }catch (Exception e){
             e.printStackTrace();

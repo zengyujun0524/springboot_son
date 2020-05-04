@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.springboot_son.mapper.VideoInfoMapper">
+  <sql id="Base_Video">
+      video_id, video_url, video_title, video_describe,
+      upload_time, agree_number, page_url, user_id, author_picture_url,
+      forward_number,comment_number
 
+  </sql>
     <resultMap type="com.example.springboot_son.entity.VideoInfo" id="VideoInfoMap">
         <result property="videoId" column="video_id" jdbcType="INTEGER"/>
         <result property="videoUrl" column="video_url" jdbcType="VARCHAR"/>
@@ -30,7 +35,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="VideoInfoMap">
         select
-          video_id, video_url, video_title, video_describe, upload_time, agree_number, page_url, user_id, author_picture_url
+        <include refid="Base_Video"></include>
         from baba_app.video_info  limit #{offset},#{limit}
 
     </select>
@@ -77,8 +82,8 @@
 
     <!--新增所有列   -->
     <insert id="insert" keyProperty="videoId" useGeneratedKeys="true">
-        insert into baba_app.video_info(video_url, video_title, video_describe, upload_time, agree_number, page_url, author_picture_url,user_id)
-        values (#{videoUrl}, #{videoTitle}, #{videoDescribe}, #{uploadTime}, #{agreeNumber}, #{pageUrl}, #{authorPictureUrl},#{userId})
+        insert into baba_app.video_info(video_url, video_title, video_describe, upload_time,  page_url, author_picture_url,user_id)
+        values (#{videoUrl}, #{videoTitle}, #{videoDescribe}, #{uploadTime}, #{pageUrl}, #{authorPictureUrl},#{userId})
     </insert>
 
     <!--通过主键修改数据-->
@@ -110,7 +115,7 @@
         where video_id = #{videoId}
     </update>
 
-    <!--通过主键删除-->
+    <!--通过主键删  -->
     <delete id="deleteById">
         delete from baba_app.video_info where video_id = #{videoId}
     </delete>

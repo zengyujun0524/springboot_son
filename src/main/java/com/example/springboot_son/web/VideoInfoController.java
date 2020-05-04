@@ -42,7 +42,7 @@ public class VideoInfoController {
          }
         return videoInfoService.queryAllByLimit(offset,limit,user_id) ;
     }
- //
+ //   曾俞钧 2020年4月28日  总资产 19173.79
     @RequestMapping(value = "/insertAgree", method = RequestMethod.POST)
     @ApiOperation(value = "点赞", notes = "是否点赞")
     @ApiImplicitParams({
@@ -71,7 +71,8 @@ public class VideoInfoController {
             @ApiImplicitParam(name = "pageUrl", value = "*页面路径", dataType = "String", paramType = "query"),
             @ApiImplicitParam(name = "userId", value = "*用户ID", dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "authorPictureUrl", value = "*作者头像路径）", dataType = "String", paramType = "query")
-    })
+
+    })   //
     public ResponseResult insert(String videoUrl,String videoTitle,String videoDescribe,String pageUrl,Integer userId,String authorPictureUrl)throws Exception{
         if (ObjectUtils.isEmpty(videoUrl)||ObjectUtils.isEmpty(videoTitle)||ObjectUtils.isEmpty(videoDescribe)||ObjectUtils.isEmpty(pageUrl)||ObjectUtils.isEmpty(userId)||ObjectUtils.isEmpty(authorPictureUrl)){
             return  ResponseResult.failure(ResultCode.NULL_ERR);

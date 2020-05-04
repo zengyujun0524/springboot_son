@@ -3,53 +3,20 @@ package com.example.springboot_son.utils;
 /**
  * Created by cengyujun on 2020/4/21 4:49 下午
  */
-public class AlipayConfig {
-
-  //合作身份者ID，签约账号，以2088开头由16位纯数字组成的字符串，查看地址：https://openhome.alipay.com/platform/keyManage.htm?keyType=partner
-  public static String gateway = "4564564";
-  //收款国际支付宝帐号
-  public static String app_id = "hokoface@yahoo.com";
-  //商户的私钥,需要PKCS8格式，RSA公私钥生成：https://doc.open.alipay.com/doc2/detail.htm?spm=a219a.7629140.0.0.nBDxfy&treeId=58&articleId=103242&docType=1
-  public static String private_key = "dhsjadhsa";
-
-  //支付宝的公钥，查看地址：https://openhome.alipay.com/platform/keyManage.htm?keyType=partner
-  public static String charset  = "Mdsagdjasdlahl";
-
-  // 签名方式
-  public static String sign_type = "RSA";
-
-  // 调试用，创建TXT日志文件夹路径，见AlipayCore.java类中的logResult(String sWord)打印方法。
-  public static String log_path ="C://";
-
-  // 字符编码格式 目前支持 gbk 或 utf-8
-  public static String alipay_public_key = "utf-8";
-
-  // 接收通知的接口名
-  public static String service = "mobile.securitypay.pay";
-
-  // 正式服务器异步通知页面路径 需http://或者https://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-  public static String notify_url = "http://www.hokoface.com:8090/llala";
+public class AlipayConfig<app_cert_path> {
+  //app应用id
+   public  static String appid="2021001155653258";
+  //应用私钥
+  public  static  String privateKey="MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCWmWJGRq18HkWIXtFMHBd7gEkkJ2Xm8hfra/ah99ae9vLZ6HtEqQyKAH92QwdO2cL8DaiKVhKZdVQjIwrQqKYQzlL9aT9FXZIukYOr8gkf5S0OAltXQRaUvoP7TOKyXRdaNdOaxA0hCmEvwtbGxM2psxMvDTCzKbD72U5ltYHLWLlE1ZdwVo6cJI+9Db6z8sbMyfaSqWndvCMU6UdKaNRGDFbXsEljMCEFLVPJEgq3cjCSMQfE+E14dJNwmMmVJdxOEzQ9ADSPJahMen7CI7ou9eZqDUG5ms+W6ZsJnTDJf0lEW4JRJ/SmTmr6C277iY4854iH4GaB/8w2Mu5h0Pz/AgMBAAECggEBAIZG6MsERbb/Prwi3rbf7Uge0Bg+UKukfBNaxiMQWfqO8WW91fsYR6fcXcnSZfe2ThZzDy2ZJShS5twVaJU3aipd7L0qVFHC5o5DDIYJXn1j19I/47VewYWKgR9WJGMogaPbjnrWB2bIXHM7ZEkCPOXsV1SCjEOTDszfqvkg50OozdfoGECn/fRTy9gSsXSp1A79ccInN2c8kZM+jY4jaVgMw6bn/jP+6y9mUhLM41PB5LkoBmr72dICnUo/BWU94Q/zlPSfpoV9ZpPeCtQ6wFe400XvX6/4SYOgYWc+rtQl/j9FZ7/few/Ax9aah+GSw0FwRshewzx5HqJj1kuLviECgYEA2873eibUt5HSMCyg6Nl5qhyudWK0ciJ79nv0fesbqRgh9z+REMbBY6Jgvt6bTg3AUUg/nHl20eudVh8dQLkM5+3o0UVam40UuZ+ZCi/OAMqY7uyNDvFb4d5xr9Y2gKKbHM+GvATfdeDUnSFM/ayy1QyTjF96nCiHEExUadujn5kCgYEAr2U2F9n08aqtN5nk//Lwlnw2UCpjhSPF4Q1Zr8ICmO0RO/phfgGeyRlv2MXX1k51lCHjeMr0/SQdfNtRClXC5sTbHNOUaQxsVmLEzytz+hj1+T1DeG80zU0tjQu1cxgxnFVFmUOsacfrzL7OhM/QGrxJMHAd5Bh9q8RtUW97wFcCgYEAyIUUSoDmCNikEIKGACV00fT8SeXTi1NeFsuZjM1QHIABbFa29cD7ZvMYosbckuYEjaIFNa+w72uryobz3rlxxprIizBjqgeX4oZvzFUz7pDj1wJA5GLWWUTeHXSjn9G3Ax9mYFtpp1WFYBqi68ACHE0uxR3M8mweWoXnc/KEX/ECgYBAcID1NmClwT0upl3aI1l9EFmsDkbODZyP2KXQywjFQqQIUy8qalH6NFxBWj64P883A1RddsOXlYM38iPOFkArJLwT1TA7gBL1kggYzTAo/K6ySW3We5T8sJRBs8GQbZ0cgL+3VYOswYTCjn+1j9w3VmHVZ/uzZ8QULXC0cK8YtQKBgQCXcEDfsiuvpZ9cubfNBSUDixpOBAvQxINHHV5g/ghHpF88MLtjzr8L3ReTJ+K+p2C2gkOJgngkufNfszMHVk8m8L3Z8PImxfDHcaSBHZU7dh4Kb2bRc9by7BUAvW9Bum5q+eP+NXxsmRFRlIvhzSlnZk1HS5QpwMRKCXl8PAX0YQ==";
+  //加密类型
+   public static String sign_type ="RSA2";
+   //app证书路径
+    public static String app_cert_path="src/main/resources/appCertPublicKey_2021001155653258.crt";
+    //设置支付宝公钥证书路径
+    public  static  String alipay_cert_path="src/main/resources/alipayCertPublicKey_RSA2.crt";
+    //设置支付宝根证书路径
+    public static String root_cert_path="src/main/resources/alipayRootCert.crt";
 
 
-  // 正式服务器异步通知页面路径 需http://或者https://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-  public static String return_url = "http://www.hokoface.com:8090/lalal";
-
-
-  // 请求网关地址
-  public static String URL = "https://mapi.alipay.com/gateway.do";
-
-  //支付类型1表示商品购物
-  public static String payment_type="1";
-  //当前交易有效时间30分钟
-  public static String it_b_pay="30m";
-  //交易币种,默认为人民币
-  public static String currency="HKD";
-  //人民币币种
-  public static String currencyRMB="CNY";
-
-  public static String forex_biz="FP";
-
-  /**APP下载网址*/
-  public static String refer_url="https://sj.qq.com/myapp/detail.htm?apkName=com.maigang.ahg";
 
 }

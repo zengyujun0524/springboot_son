@@ -1,5 +1,6 @@
 package com.example.springboot_son.entity;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -13,49 +14,29 @@ import java.io.Serializable;
 @Data
 public class VideoInfo implements Serializable {
     private static final long serialVersionUID = 163038849192696986L;
-    /**
-    * 视频ID
-    */
+    @ApiModelProperty(value = "视频ID",name = "videoId",dataType = "Long")
     private Long videoId;
-    /**
-    * 视频地址
-    */
+    @ApiModelProperty(value = "视频地址",name = "videoUrl",dataType = "String")
     private String videoUrl;
-    /**
-    * 视频标题
-    */
+    @ApiModelProperty(value = "视频地址",name = "videoUrl",dataType = "String")
     private String videoTitle;
     /**
     * 视频描述
     */
     private String videoDescribe;
-    /**
-    * 更新时间
-    */
+    @ApiModelProperty(value = "更新时间",name = "uploadTime",dataType = "Integer")
     private Integer uploadTime;
-    /**
-    * 点赞数量
-    */
+    @ApiModelProperty(value = "点赞数量",name = "agreeNumber",dataType = "Integer")
     private Integer agreeNumber;
-    /**
-    * 封面url
-    */
+    @ApiModelProperty(value = "封面路径",name = "pageUrl",dataType = "String")
     private String pageUrl;
-    /**
-    * 用户id
-    */
+    @ApiModelProperty(value = "用户ID",name = "videoUrl",dataType = "String")
     private Integer userId;
-    /**
-    * 作者头像
-    */
+    @ApiModelProperty(value = "作者头像",name = "authorPictureUrl",dataType = "String")
     private String authorPictureUrl;
-    /**
-     * 转发数
-     */
+    @ApiModelProperty(value = "转发数",name = "forwardNumber",dataType = "Integer")
     private Integer forwardNumber;
-    /**
-     * 点赞数
-     */
+    @ApiModelProperty(value = "点赞数",name = "commentNumber",dataType = "Integer")
     private Integer commentNumber;
 
 

@@ -5,16 +5,21 @@
  */
         package com.example.springboot_son.service;
         import com.example.springboot_son.entity.Equipment;
+        import com.example.springboot_son.entity.StaticResources;
         import com.example.springboot_son.entity.Verification;
+        import com.example.springboot_son.mapper.ApplicationMapper;
         import com.example.springboot_son.mapper.EquipmentMapper;
         import com.example.springboot_son.mapper.UserMapper;
         import com.example.springboot_son.utils.ObjectUtils;
         import com.example.springboot_son.utils.ResponseResult;
         import com.example.springboot_son.utils.ResultCode;
+        import com.example.springboot_son.vo.EquipmentVo;
         import lombok.extern.slf4j.Slf4j;
+        import org.joda.time.DateTime;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.stereotype.Service;
 
+        import javax.annotation.Resource;
         import java.util.HashMap;
         import java.util.LinkedList;
         import java.        util.List;
@@ -25,10 +30,13 @@
 public class EquipmentService {
 
 
-    @Autowired
+    @Resource
     EquipmentMapper equipmentMapper;
 
-    @Autowired
+      @Resource
+    ApplicationMapper applicationMapper;
+
+    @Resource
     UserMapper userMapper;
     /** 写APP
      * 获取设备信息
@@ -47,11 +55,32 @@ public class EquipmentService {
             log.info(">>>>>>>>>>>>"+userId);
             list = equipmentMapper.equipmentInfo(userId);
             data.put("list", list);
+            List <StaticResources>  listPicture =applicationMapper.listPicture();
+            data.put("staticResources",listPicture);
             return ResponseResult.success(data);
         } catch (Exception e) {
            e.printStackTrace();
         }
         return ResponseResult.failure("查询失败");
+    }
+
+    /**
+     * 修改设备名称
+     * @param equipmentName
+     * @param relationId
+     * @return
+     * @throws Exception
+     */
+   public ResponseResult modifyName(String equipmentName,Integer relationId)throws Exception{
+        try {
+            //修改设备名称
+            return equipmentMapper.modifyName(equipmentName,(int) (DateTime.now().getMillis() / 1000),relationId)>0?
+                    ResponseResult.success():ResponseResult.failure(ResultCode.NULL_ERR);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return ResponseResult.failure(ResultCode.NULL_ERR);
     }
 
     /**
@@ -68,9 +97,8 @@ public class EquipmentService {
             log.info("token失效"+userToken);
             return  ResponseResult.failure(ResultCode.LOGIN_DATE);
         }
-            List<Equipment> list = new LinkedList<Equipment>();
+            List<EquipmentVo> list = equipmentMapper.bindingDevice(userId,equipment_id);
             log.info(">>>>>>>>>>>>"+userId);
-            list = equipmentMapper.bindingDevice(userId,equipment_id);
             data.put("list", list);
             return ResponseResult.success(data);
         } catch (Exception e) {
@@ -98,8 +126,6 @@ public class EquipmentService {
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
         // 一个月时间 2592000
         String sub=userToken.substring(userToken.indexOf("-")+1);
         long l = Long.parseLong( sub )/1000;
@@ -111,7 +137,7 @@ public class EquipmentService {
         return  false;
     }
 //    public static boolean isEmpty(String str) {
-//        return str == null || str.trim().length() == 0 || "null".equals(str.trim());
+ //        return str == null || str.trim().length() == 0 || "null".equals(str.trim());
 //    }
 
 

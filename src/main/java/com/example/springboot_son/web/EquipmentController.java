@@ -5,6 +5,7 @@
  */
 package com.example.springboot_son.web;
 
+import com.alibaba.druid.sql.visitor.functions.If;
 import com.example.springboot_son.service.EquipmentService;
 import com.example.springboot_son.utils.ObjectUtils;
 import com.example.springboot_son.utils.ResponseResult;
@@ -49,7 +50,7 @@ public class EquipmentController {
 
     }
 
-    /**
+    /** ==
      * 查询用户绑定设备
      * @param userId
      * @param userToken
@@ -70,6 +71,26 @@ public class EquipmentController {
                return ResponseResult.failure(ResultCode.NULL_ERR);
 
      return equipmentService.bindingDevice(userId,equipmentId,userToken);
+ }
+
+    /**
+     * 修改设备名称
+     * @param relationId
+     * @param equipmentName
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/modifyName", method = RequestMethod.POST)
+    @ApiOperation(value = "修改设备名称", notes = "修改名称")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "relationId", value = "*绑定ID", dataType = "Integer", paramType = "query"),
+            @ApiImplicitParam(name = "equipmentName", value = "*设备名称", dataType = "String", paramType = "query")
+    })
+ public  ResponseResult modifyName (Integer relationId,String equipmentName)throws  Exception{
+     if (ObjectUtils.isEmpty(relationId)||ObjectUtils.isEmpty(equipmentName)){
+         return  ResponseResult.failure(ResultCode.NULL_ERR);
+     }
+        return equipmentService.modifyName(equipmentName,relationId);
  }
 
 

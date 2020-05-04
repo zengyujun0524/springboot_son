@@ -27,4 +27,11 @@ public class ApplicationController {
     public ResponseResult getApp() throws Exception{
         return  applicationService.getApp();
     }
+    @RequestMapping(value = "/listPicture", method = RequestMethod.POST)
+    @ApiOperation(value = "获取轮播图", notes = "静态资源")
+    public ResponseResult listPicture() throws Exception{
+        return  applicationService.listPicture();
+    }
+
+
 }

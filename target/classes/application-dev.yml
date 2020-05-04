@@ -8,7 +8,7 @@ server:
 #   key-store:classpath: zyj.jks
 #   #SSL证书密码
 #    key-store-password: 8Q64w0Uo
-#   #证书类型
+#   #证书类型  grant all on *.* to 'zyj'@'%'IDENTIFIED BY 'zyj0610A!';
 #   key-store-type: JKS
 #    #证书别名
 #   key-alias: alias
@@ -19,7 +19,7 @@ spring:
     url: jdbc:mysql://123.56.73.147:3306/baba_app?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     driver-class-name: com.mysql.jdbc.Driver
 
-# pagehelper
+# pagehelper grant all on *.* to 'zyj'@'%'IDENTIFIED BY 'zyj0610A!';
 pagehelper:
   helperDialect: mysql
   reasonable: true

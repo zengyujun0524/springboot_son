@@ -215,6 +215,7 @@ public class UserController {
             @ApiImplicitParam(name = "registerCode", value = "*验证码", dataType = "Integer", paramType = "query")})
     public ResponseResult modifyPhone(String userToken, Integer userId, String userPhone, Integer registerCode) throws Exception {
      /*   if (!token.verification(userToken)) {
+               咋们还是先面面人才  他对薪资有要求
             return ResponseResult.failure(ResultCode.LOGIN_DATE);
         }*/
         if (registerCode == 888888) {
@@ -223,11 +224,11 @@ public class UserController {
         } else {
             if (null == redisService.get(userPhone)) {
                 log.info("进来来++++++");
-//                验证注册的手机号码和发送短信的手机号码是否一致
+//               验证注册的手机号码和发送短信的手机号码是否一致
                 return ResponseResult.failure(ResultCode.REGISTERPHONEANDSENDPHONE_DIFF);
             }
             log.info("(Integer) redisService.get(\"userPhone\")"+(Integer) redisService.get("userPhone")+"输入的注册码"+registerCode);
-            //  判断验证码的时效性和准确性（发送时间、发送的验证码、用户传入的验证码）
+            //  判断验证码的时效性和准确性（发送时间、发送的验证码、用户传入的验证码
             Map<String, String> result = VerificationUtils.SMSVerification(redisService.getExpire("userPhone"), (Integer) redisService.get("userPhone"), registerCode);
             if ("success".equals(result.get("result"))) {
                 log.info("--------验证码通过--------random：" + UserController.random + ",registerCode：" + registerCode);

@@ -1,129 +1,23 @@
-09:18:15.160 logback [restartedMain] INFO  c.e.s.SpringbootSonApplication - Starting SpringbootSonApplication on cengyujundeMacBook-Pro.local with PID 749 (/Users/cengyujun/java_objct/springboot_son/target/classes started by cengyujun in /Users/cengyujun/java_objct/springboot_son)
-09:18:15.163 logback [restartedMain] INFO  c.e.s.SpringbootSonApplication - The following profiles are active: dev
-09:18:15.205 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-09:18:15.205 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-09:18:16.211 logback [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
-09:18:16.214 logback [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-09:18:16.250 logback [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19ms. Found 0 Redis repository interfaces.
-09:18:16.867 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8012 (http)
-09:18:16.875 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8012"]
-09:18:16.876 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-09:18:16.876 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.31]
-09:18:16.943 logback [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-09:18:16.943 logback [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1738 ms
-09:18:17.923 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
-09:18:17.969 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
-09:18:18.058 logback [restartedMain] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
-09:18:18.260 logback [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
-09:18:18.275 logback [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-09:18:18.286 logback [restartedMain] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
-09:18:18.476 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8012"]
-09:18:18.510 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8012 (http) with context path ''
-09:18:18.513 logback [restartedMain] INFO  c.e.s.SpringbootSonApplication - Started SpringbootSonApplication in 3.789 seconds (JVM running for 4.374)
-09:39:59.335 logback [http-nio-8012-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-09:39:59.335 logback [http-nio-8012-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-09:39:59.344 logback [http-nio-8012-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 9 ms
-09:40:17.503 logback [http-nio-8012-exec-8] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-09:40:17.504 logback [http-nio-8012-exec-8] WARN  c.z.hikari.util.DriverDataSource - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
-09:40:18.383 logback [http-nio-8012-exec-8] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-09:43:13.853 logback [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
-09:43:13.871 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-09:43:13.884 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-09:43:37.950 logback [restartedMain] INFO  c.e.s.SpringbootSonApplication - Starting SpringbootSonApplication on cengyujundeMacBook-Pro.local with PID 800 (/Users/cengyujun/java_objct/springboot_son/target/classes started by cengyujun in /Users/cengyujun/java_objct/springboot_son)
-09:43:37.954 logback [restartedMain] INFO  c.e.s.SpringbootSonApplication - The following profiles are active: dev
-09:43:37.996 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-09:43:37.996 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-09:43:38.676 logback [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
-09:43:38.678 logback [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-09:43:38.707 logback [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17ms. Found 0 Redis repository interfaces.
-09:43:39.245 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8012 (http)
-09:43:39.251 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8012"]
-09:43:39.252 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-09:43:39.252 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.31]
-09:43:39.369 logback [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-09:43:39.369 logback [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1373 ms
-09:43:40.085 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
-09:43:40.114 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
-09:43:40.167 logback [restartedMain] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
-09:43:40.296 logback [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
-09:43:40.305 logback [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-09:43:40.314 logback [restartedMain] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
-09:43:40.447 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8012"]
-09:43:40.470 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8012 (http) with context path ''
-09:43:40.472 logback [restartedMain] INFO  c.e.s.SpringbootSonApplication - Started SpringbootSonApplication in 2.9 seconds (JVM running for 3.419)
-09:43:53.096 logback [http-nio-8012-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-09:43:53.096 logback [http-nio-8012-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-09:43:53.101 logback [http-nio-8012-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 5 ms
-09:43:53.142 logback [http-nio-8012-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-09:43:53.143 logback [http-nio-8012-exec-1] WARN  c.z.hikari.util.DriverDataSource - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
-09:43:53.963 logback [http-nio-8012-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-09:45:53.339 logback [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
-09:45:53.353 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-09:45:53.363 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-09:46:07.766 logback [restartedMain] INFO  c.e.s.SpringbootSonApplication - Starting SpringbootSonApplication on cengyujundeMacBook-Pro.local with PID 820 (/Users/cengyujun/java_objct/springboot_son/target/classes started by cengyujun in /Users/cengyujun/java_objct/springboot_son)
-09:46:07.768 logback [restartedMain] INFO  c.e.s.SpringbootSonApplication - The following profiles are active: dev
-09:46:07.803 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-09:46:07.803 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-09:46:08.550 logback [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
-09:46:08.552 logback [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-09:46:08.580 logback [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16ms. Found 0 Redis repository interfaces.
-09:46:09.125 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8012 (http)
-09:46:09.131 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8012"]
-09:46:09.131 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-09:46:09.131 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.31]
-09:46:09.237 logback [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-09:46:09.238 logback [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1435 ms
-09:46:09.940 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
-09:46:09.972 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
-09:46:10.032 logback [restartedMain] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
-09:46:10.181 logback [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
-09:46:10.189 logback [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-09:46:10.198 logback [restartedMain] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
-09:46:10.335 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8012"]
-09:46:10.358 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8012 (http) with context path ''
-09:46:10.360 logback [restartedMain] INFO  c.e.s.SpringbootSonApplication - Started SpringbootSonApplication in 2.968 seconds (JVM running for 3.458)
-09:46:18.846 logback [http-nio-8012-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-09:46:18.847 logback [http-nio-8012-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-09:46:18.851 logback [http-nio-8012-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
-09:46:18.893 logback [http-nio-8012-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-09:46:18.893 logback [http-nio-8012-exec-1] WARN  c.z.hikari.util.DriverDataSource - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
-09:46:19.682 logback [http-nio-8012-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-10:39:02.005 logback [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
-10:39:02.041 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-10:39:02.053 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-10:49:38.735 logback [restartedMain] INFO  c.e.s.SpringbootSonApplication - Starting SpringbootSonApplication on cengyujundeMacBook-Pro.local with PID 1102 (/Users/cengyujun/java_objct/springboot_son/target/classes started by cengyujun in /Users/cengyujun/java_objct/springboot_son)
-10:49:38.737 logback [restartedMain] INFO  c.e.s.SpringbootSonApplication - The following profiles are active: dev
-10:49:38.793 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-10:49:38.793 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-10:49:39.630 logback [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
-10:49:39.633 logback [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-10:49:39.672 logback [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19ms. Found 0 Redis repository interfaces.
-10:49:40.338 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8012 (http)
-10:49:40.347 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8012"]
-10:49:40.347 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-10:49:40.347 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.31]
-10:49:40.488 logback [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-10:49:40.488 logback [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1695 ms
-10:49:41.452 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
-10:49:41.508 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
-10:49:41.587 logback [restartedMain] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
-10:49:41.769 logback [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
-10:49:41.784 logback [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-10:49:41.794 logback [restartedMain] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
-10:49:41.961 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8012"]
-10:49:41.987 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8012 (http) with context path ''
-10:49:41.990 logback [restartedMain] INFO  c.e.s.SpringbootSonApplication - Started SpringbootSonApplication in 3.72 seconds (JVM running for 4.237)
-10:50:14.418 logback [http-nio-8012-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-10:50:14.418 logback [http-nio-8012-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-10:50:14.425 logback [http-nio-8012-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 7 ms
-10:50:28.191 logback [http-nio-8012-exec-8] INFO  c.e.s.service.VideoInfoService - 1>>>>>>>>>Page{count=true, pageNum=0, pageSize=6, startRow=0, endRow=0, total=0, pages=0, reasonable=null, pageSizeZero=null}[]
-10:50:28.215 logback [http-nio-8012-exec-8] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-10:50:28.215 logback [http-nio-8012-exec-8] WARN  c.z.hikari.util.DriverDataSource - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
-10:50:29.042 logback [http-nio-8012-exec-8] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-10:50:29.159 logback [http-nio-8012-exec-8] INFO  c.e.s.service.VideoInfoService - userPage>>>..7
-10:50:38.788 logback [http-nio-8012-exec-6] INFO  c.e.s.service.VideoInfoService - 1>>>>>>>>>Page{count=true, pageNum=0, pageSize=7, startRow=0, endRow=0, total=0, pages=0, reasonable=null, pageSizeZero=null}[]
-10:50:43.805 logback [http-nio-8012-exec-6] WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@70ae5fab (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
-10:50:43.945 logback [http-nio-8012-exec-6] INFO  c.e.s.service.VideoInfoService - userPage>>>..7
-10:50:57.324 logback [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
-10:50:57.339 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-10:50:57.350 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+14:18:07.589 logback [restartedMain] INFO  c.e.s.SpringbootSonApplication - Starting SpringbootSonApplication on cengyujundeMacBook-Pro.local with PID 2230 (/Users/cengyujun/java_objct/springboot_son/target/classes started by cengyujun in /Users/cengyujun/java_objct/springboot_son)
+14:18:07.593 logback [restartedMain] INFO  c.e.s.SpringbootSonApplication - The following profiles are active: dev
+14:18:07.647 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+14:18:07.647 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+14:18:08.508 logback [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+14:18:08.513 logback [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+14:18:08.563 logback [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23ms. Found 0 Redis repository interfaces.
+14:18:09.352 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8012 (http)
+14:18:09.422 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8012"]
+14:18:09.422 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+14:18:09.422 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.31]
+14:18:09.502 logback [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+14:18:09.502 logback [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1855 ms
+14:18:10.574 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+14:18:10.627 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+14:18:10.737 logback [restartedMain] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+14:18:10.950 logback [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+14:18:10.964 logback [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+14:18:10.977 logback [restartedMain] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+14:18:11.197 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8012"]
+14:18:11.226 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8012 (http) with context path ''
+14:18:11.229 logback [restartedMain] INFO  c.e.s.SpringbootSonApplication - Started SpringbootSonApplication in 4.243 seconds (JVM running for 6.216)
+14:18:11.967 logback [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'

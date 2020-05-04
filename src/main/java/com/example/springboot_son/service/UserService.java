@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.Date;
@@ -23,7 +24,7 @@ import java.util.Map;
 public class UserService {
 
 
-    @Autowired
+    @Resource
     private UserMapper userMapper; // 用户mapper
     /**
      * 手机注册

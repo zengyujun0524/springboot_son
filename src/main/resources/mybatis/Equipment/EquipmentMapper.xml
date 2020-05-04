@@ -7,6 +7,25 @@
         <result property="equipmentDescribe" column="equipment_describe" jdbcType="VARCHAR"/>
         <result property="equipmentPictures" column="equipment_pictures" jdbcType="VARCHAR"/>
     </resultMap>
+
+    <resultMap id="EquipmentVoMap" type="com.example.springboot_son.vo.EquipmentVo">
+        <result property="relationId" column="relation_id" jdbcType="OTHER"/>
+        <result property="equipmentId" column="equipment_id" jdbcType="OTHER"/>
+        <result property="equipmentName" column="equipment_name" jdbcType="VARCHAR"/>
+        <result property="equipmentDescribe" column="equipment_describe" jdbcType="VARCHAR"/>
+        <result property="equipmentPictures" column="equipment_pictures" jdbcType="VARCHAR"/>
+        <result property="userId" column="user_id" jdbcType="OTHER"/>
+    </resultMap>
+
+    <resultMap type="com.example.springboot_son.entity.Relation" id="RelationMap">
+        <result property="relationId" column="relation_id" jdbcType="OTHER"/>
+        <result property="userId" column="user_id" jdbcType="OTHER"/>
+        <result property="equipmentId" column="equipment_id" jdbcType="OTHER"/>
+        <result property="state" column="state" jdbcType="OTHER"/>
+        <result property="updateTime" column="update_time" jdbcType="INTEGER"/>
+        <result property="equipmentName" column="equipment_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
     <sql id="Bash_List">
         equipment_id,equipment_name,equipment_describe,equipment_pictures
     </sql>
@@ -28,13 +47,26 @@
             equipment
         </if>
     </select>
+
     <!--用户查询绑定设备    -->
     <select id="bindingDevice"
-            resultType="com.example.springboot_son.entity.Equipment" resultMap="EquipmentMap">
-        SELECT equipment_name,equipment_describe,equipment_pictures,r.state
+            resultType="com.example.springboot_son.vo.EquipmentVo" resultMap="EquipmentVoMap">
+        SELECT e.equipment_id,r.relation_id, r.equipment_name,equipment_describe,equipment_pictures,r.state
         FROM equipment as e ,relation as r WHERE e.equipment_id  = r.equipment_id
         and
         r.state=2 and r.user_id=#{userId} and  e.equipment_id  = #{equipmentId}
     </select>
+
+    <update id="modifyName">
+        update  relation
+        <set>
+        <if test="equipmentName !=null and equipmentName !=''">
+            equipment_name=#{equipmentName},update_time=#{updateTime}
+        </if>
+        </set>
+        <where>
+            relation_id =#{relationId}
+         </where>
+    </update>
 
 </mapper>
