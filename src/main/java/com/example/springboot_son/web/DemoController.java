@@ -41,13 +41,13 @@ public class DemoController {
 
  long  z=60;
     @RequestMapping(value = "/test",method = RequestMethod.POST)
-    @ApiOperation(value = "修改用户资料", notes = "用户操作 (除user_id和user_token外都是非必填)")
+    @ApiOperation(value = "redis", notes = "用户操作 (除user_id和user_token外都是非必填)")
     public Object demoTest(){
         log.info("获取值");
-log.info(redisService.getExpire("19973559563")+"时间");
+
         redisService.set("19973559563","140076",(long) System.currentTimeMillis());
 
-       return    redisService.incr("19973559563");
+       return redisService.get("19973559563");
     }
 
     @RequestMapping(value = "/appAlipay",method = RequestMethod.POST)

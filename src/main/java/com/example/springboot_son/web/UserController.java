@@ -215,7 +215,7 @@ public class UserController {
             @ApiImplicitParam(name = "registerCode", value = "*验证码", dataType = "Integer", paramType = "query")})
     public ResponseResult modifyPhone(String userToken, Integer userId, String userPhone, Integer registerCode) throws Exception {
      /*   if (!token.verification(userToken)) {
-               咋们还是先面面人才  他对薪资有要求
+
             return ResponseResult.failure(ResultCode.LOGIN_DATE);
         }*/
         if (registerCode == 888888) {
@@ -329,6 +329,16 @@ public class UserController {
         if (ObjectUtils.isEmpty(userId)||ObjectUtils.isEmpty(pushToken))
             return  ResponseResult.failure(ResultCode.NULL_ERR);
         return  userService.modifyPush(userId,pushToken);
+    }
+    @RequestMapping(value = "/selectToken", method = RequestMethod.POST)
+    @ApiOperation(value = "PHP验证token接口", notes = "验证操作")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "userId", value = "*用户ID", dataType = "Integer", paramType = "query"),
+            @ApiImplicitParam(name = "userToken", value = "用户token", dataType = "String", paramType = "query")
+    })
+    public ResponseResult selectToken(String userToken , Integer userId)throws Exception{
+
+        return  userService.selectToke(userToken ,userId);
     }
 
 

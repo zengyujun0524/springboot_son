@@ -4,7 +4,7 @@
   <sql id="Base_Video">
       video_id, video_url, video_title, video_describe,
       upload_time, agree_number, page_url, user_id, author_picture_url,
-      forward_number,comment_number
+      forward_number,comment_number,author_name
 
   </sql>
     <resultMap type="com.example.springboot_son.entity.VideoInfo" id="VideoInfoMap">
@@ -20,11 +20,12 @@
         <result property="isResult" column="is_rsult" jdbcType="VARCHAR"/>
         <result property="forwardNumber" column="forward_number" jdbcType="VARCHAR"/>
         <result property="commentNumber" column="comment_number" jdbcType="VARCHAR"/>
+        <result property="authorName" column="author_name" jdbcType="VARCHAR"/>
     </resultMap>
     <insert id="insertAgree">
         INSERT INTO  video_agree (video_id,agree_user_id,is_rsult,modify_time) VALUES(#{videoId},#{agreeUserId},#{isRsult},#{modifyTime})
     </insert>
-    <!--查询单个 -->
+    <!--查询单个    -->
     <select id="queryById" resultMap="VideoInfoMap">
         select
           video_id, video_url, video_title, video_describe, upload_time, agree_number, page_url, user_id, author_picture_url
@@ -32,7 +33,7 @@
         where video_id = #{videoId}
     </select>
 
-    <!--查询指定行数据-->
+    <!--查询指定行数据 -->
     <select id="queryAllByLimit" resultMap="VideoInfoMap">
         select
         <include refid="Base_Video"></include>
@@ -42,53 +43,33 @@
 
     <select id="getCount" resultType="int" >
         select count(*) from  baba_app.video_info
-    </select>
-
-    <!--通过实体作为筛选条件查询-->
-    <select id="queryAll" resultMap="VideoInfoMap">
-        select
-        video_id, video_url, video_title, video_describe, upload_time, agree_number, page_url, user_id, author_picture_url
-        from baba_app.video_info
         <where>
-            <if test="videoId != null">
-                and video_id = #{videoId}
-            </if>
-            <if test="videoUrl != null and videoUrl != ''">
-                and video_url = #{videoUrl}
-            </if>
-            <if test="videoTitle != null and videoTitle != ''">
-                and video_title = #{videoTitle}
-            </if>
-            <if test="videoDescribe != null and videoDescribe != ''">
-                and video_describe = #{videoDescribe}
-            </if>
-            <if test="uploadTime != null and uploadTime != ''">
-                and upload_time = #{uploadTime}
-            </if>
-            <if test="agreeNumber != null and agreeNumber != ''">
-                and agree_number = #{agreeNumber}
-            </if>
-            <if test="pageUrl != null and pageUrl != ''">
-                and page_url = #{pageUrl}
-            </if>
-            <if test="userId != null">
-                and user_id = #{userId}
-            </if>
-            <if test="authorPictureUrl != null and authorPictureUrl != ''">
-                and author_picture_url = #{authorPictureUrl}
-            </if>
+            video_id =#{videoId}
         </where>
     </select>
 
-    <!--新增所有列   -->
+    <!-- 通过实体作为筛选条件查询 -->
+    <select id="queryAll" resultMap="VideoInfoMap" >
+        select
+     <include refid="Base_Video"></include>
+        from baba_app.video_info
+        <where>
+
+             <if test="userId !=''">
+                  user_id=#{userId}
+             </if>
+  </where>
+    </select>
+
+    <!--新增所有列    -->
     <insert id="insert" keyProperty="videoId" useGeneratedKeys="true">
-        insert into baba_app.video_info(video_url, video_title, video_describe, upload_time,  page_url, author_picture_url,user_id)
-        values (#{videoUrl}, #{videoTitle}, #{videoDescribe}, #{uploadTime}, #{pageUrl}, #{authorPictureUrl},#{userId})
+        insert into baba_app.video_info(video_url, video_title, video_describe, upload_time,  page_url, author_picture_url,user_id,author_name)
+        values (#{videoUrl}, #{videoTitle}, #{videoDescribe}, #{uploadTime}, #{pageUrl}, #{authorPictureUrl},#{userId},#{authorName})
     </insert>
 
     <!--通过主键修改数据-->
-    <update id="update">
-        update baba_app.video_info
+    <update id="update" parameterType="com.example.springboot_son.entity.VideoInfo">
+        update video_info
         <set>
             <if test="videoUrl != null and videoUrl != ''">
                 video_url = #{videoUrl},
@@ -111,10 +92,14 @@
             <if test="authorPictureUrl != null and authorPictureUrl != ''">
                 author_picture_url = #{authorPictureUrl},
             </if>
+            <if test="commentNumber!= null and commentNumber!= ''">
+                comment_number=#{commentNumber}
+            </if>
         </set>
-        where video_id = #{videoId}
+          <where>
+              video_id = #{videoId}
+          </where>
     </update>
-
     <!--通过主键删  -->
     <delete id="deleteById">
         delete from baba_app.video_info where video_id = #{videoId}

@@ -66,7 +66,13 @@
        user_id=#{userId}
    </where>
     </update>
+    <select id="selectToken" resultMap="VerificationMap">
+        select <include refid="Base_ver"></include> from verification
+     <where>
+         user_token=#{userToken} AND   user_id=#{userId}
+     </where>
 
+    </select>
       <!--修改用户资料-->
     <update id="upUser" parameterType="com.example.springboot_son.entity.User">
    UPDATE `user`

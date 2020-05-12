@@ -50,7 +50,7 @@ public class EquipmentController {
 
     }
 
-    /** ==
+    /**
      * 查询用户绑定设备
      * @param userId
      * @param userToken

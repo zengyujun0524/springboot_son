@@ -25,6 +25,7 @@
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/VerificationUtils.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/youmen/push/AndroidNotification.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/sms/httpclient/PoolingHTTPClient.java
+/Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/mapper/CommentMapper.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/ann/RequireToken.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/web/EquipmentController.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/youmen/push/ios/IOSBroadcast.java
@@ -37,6 +38,7 @@
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/sms/httpclient/HTTPClient.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/vo/UserVo.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/AlipayConfig.java
+/Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/entity/StaticResources.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/test/QcloudSmsTest2.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/mapper/RelationMapper.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/youmen/push/ios/IOSGroupcast.java
@@ -67,6 +69,7 @@
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/web/UserController.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/ResponseResult.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/web/AliPayController.java
+/Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/entity/Comment.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/PageBean.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/sms/VoiceFileStatusResult.java
 /Users/cengyujun/java_objct/springboot_son/src/main/java/com/example/springboot_son/utils/sms/SmsStatusPullCallbackResult.java

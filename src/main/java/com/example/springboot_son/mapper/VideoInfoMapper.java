@@ -30,7 +30,11 @@ public interface VideoInfoMapper {
      */
     List<VideoInfo> queryAllByLimit(@Param("offset") int offset,@Param("limit") int limit);
 
-    int getCount();
+    /**
+     * 查询视频评论总数
+     * @returngetCount
+     */
+    int getCount(@Param("videoId") int vid );
 
 
     /**
@@ -63,7 +67,7 @@ public interface VideoInfoMapper {
      * @param videoId 主键
      * @return 影响行数
      */
-    int deleteById(Long videoId);
+    int deleteById(Integer videoId)throws  Exception;
 
     int insertAgree(VideoAgree videoAgree)throws  Exception;
 

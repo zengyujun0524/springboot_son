@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 /**
  * @author 曾俞钧
- * @version 1.0
+ * @version 1.0    grant all on *.* to 'baba'@'%'IDENTIFIED BY 'carry0610A!'; #使用root替换dms，可设置为允许root账号远程登录。
  * @date 2020/4/7 10:26 上午
  */
 @Slf4j

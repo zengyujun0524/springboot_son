@@ -1,7 +1,7 @@
 /**
- * @author 曾俞钧
+ * @author
  * @date 2020/3/21 14:44
- * @version 1.0
+ * @version 1.0  http://123.56.73.147/
  */
         package com.example.springboot_son.service;
         import com.example.springboot_son.entity.Equipment;
@@ -38,7 +38,7 @@ public class EquipmentService {
 
     @Resource
     UserMapper userMapper;
-    /** 写APP
+    /**
      * 获取设备信息
      * @return bin
      * @throws Exception

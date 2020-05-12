@@ -4,6 +4,7 @@ import com.example.springboot_son.entity.User;
 import com.example.springboot_son.entity.Verification;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface UserMapper {
@@ -39,6 +40,8 @@ public interface UserMapper {
      Verification getUserByToken(int userId, String userToken) throws  Exception;
      //修改推送token
        Boolean modifyPush(int userId,String pushToken ) throws  Exception;
+     //验证token
+      Verification selectToken(String userToken, Integer userId);
 
 }
 

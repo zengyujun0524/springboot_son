@@ -269,6 +269,26 @@ public class UserService {
         return  ResponseResult.failure(ResultCode.VER_ERR);
     }
 
+    /**
+     * PHP验证用户token
+     *
+     * @param userToken
+     * @return
+     */
+    public  ResponseResult selectToke(String userToken, Integer userId){
+         try{
+             if (userMapper.selectToken(userToken,userId)!=null){
+               Map<String, Object> data = new HashMap<String, Object>();
+                 User user = userMapper.queryUers(userId);
+                 data.put("user",user);
+                 return ResponseResult.success(data);
+         }
+         }catch (Exception e){
+             e.printStackTrace();
+         }
+        return  ResponseResult.failure(ResultCode.VER_ERR);
+    }
+
     public  boolean  verification(String user_token,Integer user_id) throws Exception {
 
         if (ObjectUtils.isEmpty(user_token)){
@@ -289,8 +309,6 @@ public class UserService {
 
             e.printStackTrace();
         }
-
-
 
         // 一个月时间 2592000
         String sub=user_token.substring(user_token.indexOf("-")+1);

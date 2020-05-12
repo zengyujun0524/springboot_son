@@ -15,7 +15,7 @@ import java.io.Serializable;
 public class VideoInfo implements Serializable {
     private static final long serialVersionUID = 163038849192696986L;
     @ApiModelProperty(value = "视频ID",name = "videoId",dataType = "Long")
-    private Long videoId;
+    private int videoId;
     @ApiModelProperty(value = "视频地址",name = "videoUrl",dataType = "String")
     private String videoUrl;
     @ApiModelProperty(value = "视频地址",name = "videoUrl",dataType = "String")
@@ -38,6 +38,8 @@ public class VideoInfo implements Serializable {
     private Integer forwardNumber;
     @ApiModelProperty(value = "点赞数",name = "commentNumber",dataType = "Integer")
     private Integer commentNumber;
+    @ApiModelProperty(value = "作者名称",name = "authorName",dataType ="String")
+    private  String authorName;
 
 
 }

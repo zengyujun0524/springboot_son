@@ -3,7 +3,7 @@ server:
 #  ssl:
 #    key-store: classpath:zyj.pfx
 #    key-store-password: 8Q64w0Uo
-#    key-store-type: pfx 8Q64w0Uo   可以求
+#    key-store-type: pfx 8Q64w0Uo
 #  ssl:   #SSL证书路径 一定要加上classpath:
 #   key-store:classpath: zyj.jks
 #   #SSL证书密码
@@ -18,6 +18,12 @@ spring:
     password: carry0610A!
     url: jdbc:mysql://123.56.73.147:3306/baba_app?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     driver-class-name: com.mysql.jdbc.Driver
+
+#    datasource:
+#      username: zyj
+#      password: 85DpKzWczm4BZziS
+#      url: jdbc:mysql://39.102.56.91:3306/baba_app?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+#      driver-class-name: com.mysql.jdbc.Driver
 
 # pagehelper grant all on *.* to 'zyj'@'%'IDENTIFIED BY 'zyj0610A!';
 pagehelper:
@@ -40,11 +46,11 @@ mybatis:
 #    min-idle: 0
 #    timeout: 5000ms
 
-
+##生产环境
   redis:
-    host: localhost
+    host: 39.102.56.91
     port: 6379
-    password: 0524A
+    password: zyj0610A
     max-active: 100
     max-wait: 30000
     max-idle: 20
@@ -52,16 +58,17 @@ mybatis:
     timeout: 5000ms
 #  redis:
 #    database: 0
-#    host: 123.56.73.147
+#    host: 39.102.56.91
 #    jedis:
 #      pool:
 #        max-active: 8
 #        max-idle: 8
 #        max-wait: -1
 #        min-idle: 0
-#    password: 0524A
+#    password: zyj0610A
 #    port: 6379
-
+# nohup java -jar springboot_son-0.0.1-SNAPSHOT.jar &  执行
+# ps aux|grep springboot_son-0.0.1-SNAPSHOT.jar 查看进程
 #showSql
 logging:
   level:

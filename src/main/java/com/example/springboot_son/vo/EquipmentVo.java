@@ -13,7 +13,6 @@ import javax.persistence.Column;
 @Data
 public class EquipmentVo {
 
-    //
     @ApiModelProperty(value = "设备ID")
     private  Integer equipmentId;   //设备ID
     private  String  equipmentName;  //设备名称
