@@ -48,23 +48,19 @@ public class VideoInfoService {
      if ( $query_string ~* ".*[\;'\<\>].*" ){
      return 404;
      }
-
      location / {
      proxy_pass http://123.56.73.147:8012;
      add_header Access-Control-Allow-Origin *;
      }
      }
-
      server
      {
      listen 80;
      server_name www.zengyujun.top;
      index index.html index.htm index.php;
      root  /www/server/phpmyadmin;
-
      #error_page   404   /404.html;
-     include enable-php.conf;
-
+     include enable-php.conf;d
      location / {
      proxy_pass http://39.102.56.91:8012;
      add_header Access-Control-Allow-Origin *;
@@ -73,12 +69,10 @@ public class VideoInfoService {
      {
      expires      30d;
      }
-
      location ~ .*\.(js|css)?$
      {
      expires      12h;
      }
-
      location ~ /\.
      {
      deny all;
@@ -205,14 +199,13 @@ public class VideoInfoService {
         return  ResponseResult.failure(ResultCode.NULL_ERR);
      }
 
-    /**
+    /**  遇
      *  获取我的发布视频
      * @param videoInfo
      * @return
      */
     public  ResponseResult queryAll(VideoInfo videoInfo){
         try {
-
             Map<String, List> data = new HashMap<String, List>();
             List<VideoInfo> video =videoInfoMapper.queryAll(videoInfo);
               log.info("数据》》》》》"+video+"userid"+videoInfo.getUserId());
@@ -222,8 +215,6 @@ public class VideoInfoService {
             return ResponseResult.failure(ResultCode.NULL_ERR);
         }
 
-}
+   }
 
-
-
-}
+ }

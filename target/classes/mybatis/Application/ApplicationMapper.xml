@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot_son.mapper.ApplicationMapper">
+
+    <resultMap type="com.example.springboot_son.entity.Application" id="ApplicationMap">
+        <result property="appId" column="app_id" jdbcType="INTEGER"/>
+        <result property="versionNum" column="version_num" jdbcType="VARCHAR"/>
+        <result property="describe" column="describe" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="VARCHAR"/>
+        <result property="mandatoryUpstring" column="mandatory_upstring" jdbcType="VARCHAR"/>
+        <result property="versionName" column="version_name" jdbcType="VARCHAR"/>
+        <result property="apkAddress" column="apk_address" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap type="com.example.springboot_son.entity.StaticResources" id="StaticResourcesMap">
+        <result property="pictureId" column="picture_id" jdbcType="INTEGER"/>
+        <result property="pictureUrl" column="picture_url" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_app">
+        app_id,version_num,describe,create_time,mandatory_upstring,version_name
+    </sql>
+    <sql id="Base_Static">
+        picture_id,picture_url
+    </sql>
+
+    <select id="listPicture"    resultType="com.example.springboot_son.entity.StaticResources" resultMap="StaticResourcesMap">
+select  <include refid="Base_Static"></include> FROM  static_resources
+    </select>
+
+    <select id="getApp"  resultType="com.example.springboot_son.entity.Application" resultMap="ApplicationMap" >
+        select  * from application
+    </select>
+
+
+</mapper>

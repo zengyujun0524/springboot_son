@@ -2,7 +2,9 @@ package com.example.springboot_son.service;
 
 import com.example.springboot_son.entity.User;
 import com.example.springboot_son.entity.Verification;
+import com.example.springboot_son.entity.VideoInfo;
 import com.example.springboot_son.mapper.UserMapper;
+import com.example.springboot_son.mapper.VideoInfoMapper;
 import com.example.springboot_son.utils.ObjectUtils;
 import com.example.springboot_son.utils.ResponseResult;
 import com.example.springboot_son.utils.ResultCode;
@@ -26,6 +28,9 @@ public class UserService {
 
     @Resource
     private UserMapper userMapper; // 用户mapper
+
+    @Resource
+    private VideoInfoMapper videoInfoMapper;//修改视频
     /**
      * 手机注册
      * @param user
@@ -143,6 +148,13 @@ public class UserService {
             if (index>0){
                 log.info("-------修改成功 -------");
                 User user1 =userMapper.queryUers(user.getUserId());
+                VideoInfo videoInfo = new VideoInfo();
+                videoInfo.setUserId(user1.getUserId());
+                videoInfo.setAuthorName(user1.getUserName());
+                videoInfo.setAuthorPictureUrl(user1.getPictureUrl());
+                //修改视频作者名称
+                  videoInfoMapper.updateNameById(videoInfo);
+
                 Map<String, Object> data = new HashMap<String, Object>();
                 data.put("user",user1);
                 return  ResponseResult.success(data);

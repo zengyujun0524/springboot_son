@@ -192,15 +192,13 @@ public class UserController {
         } else {
             user.setUserName(userName);
         }
-
-
         user.setUserId(userId);
         return userService.upUser(user,userToken);
     }
 
     /**
      * 修改手机号
-     *
+     *  结构
      * @param userToken
      * @param userId
      * @param userPhone
@@ -215,12 +213,9 @@ public class UserController {
             @ApiImplicitParam(name = "registerCode", value = "*验证码", dataType = "Integer", paramType = "query")})
     public ResponseResult modifyPhone(String userToken, Integer userId, String userPhone, Integer registerCode) throws Exception {
      /*   if (!token.verification(userToken)) {
-
             return ResponseResult.failure(ResultCode.LOGIN_DATE);
         }*/
         if (registerCode == 888888) {
-
-
         } else {
             if (null == redisService.get(userPhone)) {
                 log.info("进来来++++++");
@@ -242,7 +237,6 @@ public class UserController {
         }
         return userService.modifyPhone(userId, userPhone,userToken);
     }
-
     /**
      * 用户登出
      *
@@ -259,10 +253,8 @@ public class UserController {
     public ResponseResult userLogout(Integer userId,String userToken) throws Exception {
          if (ObjectUtils.isEmpty(userId)||ObjectUtils.isEmpty(userToken))
              return  ResponseResult.failure(ResultCode.NULL_ERR);
-
         return userService.userLogout(userId,userToken);
     }
-
     /**
      * 修改手势密码
      * @param userId

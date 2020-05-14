@@ -54,7 +54,6 @@
      <include refid="Base_Video"></include>
         from baba_app.video_info
         <where>
-
              <if test="userId !=''">
                   user_id=#{userId}
              </if>
@@ -66,7 +65,22 @@
         insert into baba_app.video_info(video_url, video_title, video_describe, upload_time,  page_url, author_picture_url,user_id,author_name)
         values (#{videoUrl}, #{videoTitle}, #{videoDescribe}, #{uploadTime}, #{pageUrl}, #{authorPictureUrl},#{userId},#{authorName})
     </insert>
+<!--  用户修改名称-->
+    <update id="updateNameById">
+        update video_info
+        <set>
+            <if test="authorPictureUrl != null and authorPictureUrl != ''">
+                author_picture_url = #{authorPictureUrl},
+            </if>
+            <if test="authorName != null and authorName != ''">
+                author_name = #{authorName},
+            </if>
 
+        </set>
+        <where>
+            user_id=#{userId}
+        </where>
+    </update>
     <!--通过主键修改数据-->
     <update id="update" parameterType="com.example.springboot_son.entity.VideoInfo">
         update video_info

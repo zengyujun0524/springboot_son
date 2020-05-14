@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RedisConfiguration">
+    <option name="serverConfigurations">
+      <list>
+        <ServerConfiguration>
+          <option name="databaseVendor" value="DatabaseVendor{name='RedisDB'}" />
+          <option name="label" value="zzzz" />
+          <option name="password" value="" />
+          <option name="serverUrl" value="localhost:6379" />
+        </ServerConfiguration>
+        <ServerConfiguration>
+          <option name="databaseVendor" value="DatabaseVendor{name='RedisDB'}" />
+          <option name="label" value="本地" />
+          <option name="password" value="" />
+          <option name="serverUrl" value="localhost:6379" />
+        </ServerConfiguration>
+      </list>
+    </option>
+  </component>
+</project>

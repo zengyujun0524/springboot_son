@@ -71,4 +71,6 @@ public interface VideoInfoMapper {
 
     int insertAgree(VideoAgree videoAgree)throws  Exception;
 
+    int updateNameById(VideoInfo videoInfo);
+
 }

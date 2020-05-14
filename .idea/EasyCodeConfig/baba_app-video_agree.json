@@ -1,0 +1,38 @@
+{
+  "name" : "VideoAgree",
+  "comment" : null,
+  "fullColumn" : [ {
+    "name" : "videoId",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "agreeUserId",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "isRsult",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "modifyTime",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  } ],
+  "pkColumn" : null,
+  "otherColumn" : null,
+  "savePackageName" : "com.example.springboot_son.entity",
+  "savePath" : "./src/main/java/com/example/springboot_son/entity",
+  "saveModelName" : "springboot_son"
+}
