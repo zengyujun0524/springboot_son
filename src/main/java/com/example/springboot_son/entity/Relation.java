@@ -9,7 +9,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.persistence.Entity;
-
+//09ea5eb700258bc6652fef5a6871fa3833f28345
 @Data
 public class Relation {
     @ApiModelProperty(value = "标识列")

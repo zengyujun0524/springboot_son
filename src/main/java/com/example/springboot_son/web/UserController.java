@@ -41,7 +41,6 @@ public class UserController {
     /**
      * 手机注册登入
      *
-     * 
      * @param userPhone
      * @param phoneModel
      * @param pictureUrl
@@ -67,12 +66,11 @@ public class UserController {
 
             if (null == redisService.get(userPhone)) {
                 log.info("2进来来++++++");
-//                验证注册的手机号码和发送短信的手机号码是否一致
+            //   验证注册的手机号码和发送短信的手机号码是否一致  一单一时爽
                 return ResponseResult.failure(ResultCode.REGISTERPHONEANDSENDPHONE_DIFF);
             }
-          //  log.info("(Integer) redisService.get(\"userPhone\")"+(Integer) redisService.get(userPhone)+"<输入的注册码"+registerCode);
+            // log.info("(Integer) redisService.get(\"userPhone\")"+(Integer) redisService.get(userPhone)+"<输入的注册码"+registerCode);
             //  判断验证码的时效性和准确性（发送时间、发送的验证码、用户传入的验证码
-
            log.info(userPhone+"redisService.getExpire(userPhone)>>"+redisService.getExpire(userPhone)+"<edisService.get(userPhone)>"+redisService.get(userPhone));
             Map<String, String> result = VerificationUtils.SMSVerification(redisService.getExpire(userPhone), Integer.parseInt(String.valueOf(redisService.get(userPhone))), registerCode);
             if ("success".equals(result.get("result"))) {
